@@ -19,7 +19,7 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 // Load plugin class files
-require_once( 'includes/class-wc-better-shipping-calculator-for-brazil.php' );
+require_once( 'includes/class-wc-better-shipping-calculator-for-brazil-plugin.php' );
 
 /**
  * Returns the main instance of WC_Better_Shipping_Calculator_for_Brazil to prevent the need to use globals.

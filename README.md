@@ -4,7 +4,7 @@ Calculadora de frete do WooCommerce sem os campos de País e Estado.
 
 **Só funciona em lojas que vendem apenas para o brasil.**
 
-> Obs: Este plugin ainda precisa ser testado em vários temas, somente testei com o Storefront. Qualquer erro ou comportamento estranho que venha acontecer abra uma issue informando a versão do seu WordPress, do WooCommerce, assim como o nome e versão do seu tema.
+> Obs: Este plugin ainda precisa ser testado em vários temas, somente testei com o Storefront. Caso ocorra qualquer erro ou comportamento estranho, abra uma issue informando a versão do seu WordPress, do seu WooCommerce, assim como o nome e versão do seu tema.
 
 ## Instalação
 

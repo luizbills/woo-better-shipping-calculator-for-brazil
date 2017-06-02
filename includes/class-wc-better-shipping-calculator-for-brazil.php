@@ -148,8 +148,8 @@ class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 				// used by this plugin
 				'WC_VERSION' => defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? WC()->version : '',
 				'script_debug' => defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG,
-				'hide_country_field' => true,
-				'hide_state_field' => true
+				'hide_country_field' => 'on',
+				'hide_state_field' => 'on'
 			) );
 		}
 	} // End enqueue_scripts ()

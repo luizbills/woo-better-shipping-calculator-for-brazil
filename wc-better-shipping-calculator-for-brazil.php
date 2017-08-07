@@ -10,7 +10,7 @@
  * Tested up to: 4.7
  *
  * WC requires at least: 2.6
- * WC tested up to: 3.0
+ * WC tested up to: 3.1
  *
  * Text Domain: wc-better-shipping-calculator-for-brazil
  * Domain Path: /lang/

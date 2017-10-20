@@ -197,7 +197,7 @@ class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 	 * @since 1.0.0
 	 */
 	public function missing_dependencies_admin_notice () {
-		$plugin_name = '<b>' . __( 'WooCommerce Better User Experience for Brazil', 'wc-better-user-experience-for-brazil' ) . '</b>';
+		$plugin_name = '<b>' . __( 'WooCommerce Better Shipping Calculator for Brazil', 'wc-better-user-experience-for-brazil' ) . '</b>';
 		$woocommerce_link = '<a href="https://wordpress.org/extend/plugins/woocommerce/">WooCommerce</a>';
 		$class = 'notice notice-error';
 
@@ -205,14 +205,14 @@ class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 	}
 
 	/**
-	 * Main WC_Better_User_Experience_for_Brazil Instance
+	 * Main WC_Better_Shipping_Calculator_for_Brazil_Plugin Instance
 	 *
-	 * Ensures only one instance of WC_Better_User_Experience_for_Brazil is loaded or can be loaded.
+	 * Ensures only one instance of WC_Better_Shipping_Calculator_for_Brazil_Plugin is loaded or can be loaded.
 	 *
 	 * @since 1.0.0
 	 * @static
-	 * @see WC_Better_User_Experience_for_Brazil()
-	 * @return Main WC_Better_User_Experience_for_Brazil instance
+	 * @see WC_Better_Shipping_Calculator_for_Brazil_Plugin()
+	 * @return Main WC_Better_Shipping_Calculator_for_Brazil_Plugin instance
 	 */
 	public static function instance ( $file = '', $version = '1.0.0' ) {
 		if ( is_null( self::$_instance ) ) {

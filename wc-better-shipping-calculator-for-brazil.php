@@ -1,7 +1,7 @@
 <?php
 /*
  * Plugin Name: WooCommerce Better Shipping Calculator for Brazil
- * Version: 1.0.1
+ * Version: 1.0.2
  * Plugin URI: https://github.com/luizbills/wc-better-shipping-calculator-for-brazil
  * Description: Shipping calculator without Country and State fields. Works only in brazilian stores.
  * Author: Luiz Paulo Bills
@@ -10,7 +10,7 @@
  * Tested up to: 4.7
  *
  * WC requires at least: 2.6
- * WC tested up to: 3.1
+ * WC tested up to: 3.2
  *
  * Text Domain: wc-better-shipping-calculator-for-brazil
  * Domain Path: /lang/
@@ -28,7 +28,7 @@ require_once( 'includes/class-wc-better-shipping-calculator-for-brazil-plugin.ph
  * @return object WC_Better_Shipping_Calculator_for_Brazil
  */
 function WC_Better_Shipping_Calculator_for_Brazil () {
-	$instance = WC_Better_Shipping_Calculator_for_Brazil_Plugin::instance( __FILE__, '1.0.0' );
+	$instance = WC_Better_Shipping_Calculator_for_Brazil_Plugin::instance( __FILE__, '1.0.2' );
 
 	return $instance;
 }

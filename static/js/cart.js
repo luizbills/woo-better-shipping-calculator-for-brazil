@@ -198,6 +198,7 @@ window.jQuery( function( $ ) {
 			}
 
 			calculator_fields.slideToggle( 'slow' );
+			$( document.body ).trigger( 'country_to_state_changed' );
 
 			return false;
 		},
@@ -315,11 +316,12 @@ window.jQuery( function( $ ) {
 			this.remove_coupon_clicked = this.remove_coupon_clicked.bind( this );
 			this.quantity_update       = this.quantity_update.bind( this );
 			this.item_remove_clicked   = this.item_remove_clicked.bind( this );
+			this.item_restore_clicked  = this.item_restore_clicked.bind( this );
 			this.update_cart           = this.update_cart.bind( this );
 
 			$( document ).on(
 				'wc_update_cart',
-				this.update_cart );
+				function() { cart.update_cart.apply( cart, [].slice.call( arguments, 1 ) ); } );
 			$( document ).on(
 				'click',
 				'.woocommerce-cart-form input[type=submit]',
@@ -340,6 +342,10 @@ window.jQuery( function( $ ) {
 				'click',
 				'.woocommerce-cart-form .product-remove > a',
 				this.item_remove_clicked );
+			$( document ).on(
+				'click',
+				'.woocommerce-cart .restore-item',
+				this.item_restore_clicked );
 			$( document ).on(
 				'change input',
 				'.woocommerce-cart-form .cart_item :input',
@@ -581,7 +587,37 @@ window.jQuery( function( $ ) {
 				type:     'GET',
 				url:      $a.attr( 'href' ),
 				dataType: 'html',
-				success: update_wc_div,
+				success: function( response ) {
+					update_wc_div( response );
+				},
+				complete: function() {
+					unblock( $form );
+					unblock( $( 'div.cart_totals' ) );
+				}
+			} );
+		},
+
+		/**
+		 * Handle when a restore item link is clicked.
+		 *
+		 * @param {Object} evt The JQuery event
+		 */
+		item_restore_clicked: function( evt ) {
+			evt.preventDefault();
+ 
+			var $a = $( evt.currentTarget );
+			var $form = $( 'form.woocommerce-cart-form' );
+ 
+			block( $form );
+			block( $( 'div.cart_totals' ) );
+ 
+			$.ajax( {
+				type:     'GET',
+				url:      $a.attr( 'href' ),
+				dataType: 'html',
+				success:  function( response ) {
+					update_wc_div( response );
+				},
 				complete: function() {
 					unblock( $form );
 					unblock( $( 'div.cart_totals' ) );

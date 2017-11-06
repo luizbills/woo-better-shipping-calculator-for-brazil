@@ -29,6 +29,14 @@ class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 	public $_version;
 
 	/**
+	 * The language domain.
+	 * @var     string
+	 * @access  public
+	 * @since   1.0.0
+	 */
+	public $domain;
+
+	/**
 	 * The token.
 	 * @var     string
 	 * @access  public
@@ -85,6 +93,7 @@ class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 	public function __construct ( $file = '', $version = '1.0.0' ) {
 		$this->_version = $version;
 		$this->_token = 'wc_better_shipping_calculator_for_brazil';
+		$this->domain = 'wc-better-user-experience-for-brazil';
 
 		// Load plugin environment variables
 		$this->file = $file;
@@ -127,11 +136,12 @@ class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 	public function enqueue_scripts () {
 		if ( is_cart() ) {
 
+			// support only WC 2.6.x and 3+
+			$version_suffix = version_compare( WC()->version, '3.0.0', '<') ? '-' . substr( WC()->version, 0, 3) : '';
+			if ( ! empty( $version_suffix ) && version_compare( WC()->version, '2.6.0', '>=') ) return;
+
 			// remove the default cart.js of the WooCommerce
 			wp_deregister_script( 'wc-cart' );
-
-			// support WC 2.6.x and 3.x
-			$version_suffix = version_compare( WC()->version, '3.0.0', '<') ? '-' . substr( WC()->version, 0, 3) : '';
 
 			// add our custom cart.js
 			wp_register_script( $this->_token . '-cart', esc_url( $this->assets_url ) . 'js/cart' . $version_suffix . $this->script_suffix . '.js', array( 'jquery', 'wc-country-select', 'wc-address-i18n' ), $this->_version );
@@ -148,8 +158,8 @@ class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 				// used by this plugin
 				'WC_VERSION' => defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? WC()->version : '',
 				'script_debug' => defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG,
-				'hide_country_field' => 'on',
-				'hide_state_field' => 'on'
+				'hide_country_field' => apply_filters( $this->_token . '_hide_country', 'on' ),
+				'hide_state_field' => apply_filters( $this->_token . '_hide_state', 'on' )
 			) );
 		}
 	} // End enqueue_scripts ()
@@ -161,7 +171,7 @@ class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 	 * @return  void
 	 */
 	public function load_localisation () {
-		load_plugin_textdomain( 'wc-better-user-experience-for-brazil', false, dirname( plugin_basename( $this->file ) ) . '/lang/' );
+		load_plugin_textdomain( $this->domain, false, dirname( plugin_basename( $this->file ) ) . '/lang/' );
 	} // End load_localisation ()
 
 	/**
@@ -171,12 +181,12 @@ class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 	 * @return  void
 	 */
 	public function load_plugin_textdomain () {
-		$domain = 'wc-better-user-experience-for-brazil';
+		$domain = 
 
-		$locale = apply_filters( 'plugin_locale', get_locale(), $domain );
+		$locale = apply_filters( 'plugin_locale', get_locale(), $this->domain );
 
-		load_textdomain( $domain, WP_LANG_DIR . '/' . $domain . '/' . $domain . '-' . $locale . '.mo' );
-		load_plugin_textdomain( $domain, false, dirname( plugin_basename( $this->file ) ) . '/lang/' );
+		load_textdomain( $this->domain, WP_LANG_DIR . '/' . $this->domain . '/' . $this->domain . '-' . $locale . '.mo' );
+		load_plugin_textdomain( $this->domain, false, dirname( plugin_basename( $this->file ) ) . '/lang/' );
 
 		add_action( 'init', array( $this, 'load_localisation' ), 0 );
 	} // End load_plugin_textdomain ()

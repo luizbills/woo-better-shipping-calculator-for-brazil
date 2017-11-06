@@ -19,7 +19,7 @@ Calculadora de frete do WooCommerce sem os campos de País e Estado.
 ## Perguntas frequentes
 
 ### Este plugin é compatível com a versão 3.0 ou mais recente?
-Sim. Este plugin foi testado com a versão 2.6 e, até o momento, com a versão 3.1 do WooCommerce.
+Sim. Este plugin foi testado com a versão 2.6 e, até o momento, com a versão 3.2 do WooCommerce.
 
 ## Licensa
 

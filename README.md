@@ -9,8 +9,8 @@ Calculadora de frete do WooCommerce sem os campos de País e Estado.
 
 ## Instalação
 
-1. Baixe o arquivo *ZIP* da versão mais recente na [lista de releases](https://github.com/luizbills/wc-better-shipping-calculator-for-brazil/releases) (o arquivo com nome mais ou menos assim *wc-better-shipping-calculator-for-brazil-{versão}.zip*).
-1. Vá no menu **Plugins > Adicionar novo** e depois em **Fazer upload do plugin**.
+1. Baixe o arquivo *zip* da [versão mais recente](https://github.com/luizbills/wc-better-shipping-calculator-for-brazil/releases/download/1.0.2/wc-better-shipping-calculator-for-brazil.zip).
+1. Vá no seu *wp-admin* em **Plugins > Adicionar novo** e depois em **Fazer upload do plugin**.
 1. Faça upload do zip que você baixou.
 1. Ative o plugin.
 
@@ -20,6 +20,14 @@ Calculadora de frete do WooCommerce sem os campos de País e Estado.
 
 ### Este plugin é compatível com a versão 3.0 ou mais recente?
 Sim. Este plugin foi testado com a versão 2.6 e, até o momento, com a versão 3.2 do WooCommerce.
+
+### Posso fazer apenas o campo de estado ser ocultado?
+Sim. Adicione o código abaixo no seu `functions.php` ou use um [plugin para adicionar códigos](https://medium.com/@luizbills/adicione-php-ao-seu-tema-wordpress-sem-ter-que-editar-o-functions-php-66728752f9f4):
+```php
+add_filter( 'wc_better_shipping_calculator_for_brazil_hide_country', function () {
+  return false;
+} );
+```
 
 ## Licensa
 

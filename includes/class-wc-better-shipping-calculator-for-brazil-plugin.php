@@ -122,6 +122,9 @@ class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 		}
 
 		register_activation_hook( $this->file, array( $this, 'install' ) );
+		
+		// remove city field
+		add_filter( 'woocommerce_shipping_calculator_enable_city', '__return_false' );
 
 		// Load frontend JS & CSS
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ), 10 );

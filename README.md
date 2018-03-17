@@ -1,19 +1,6 @@
 # WooCommerce Better Shipping Calculator for Brazil
 
-Calculadora de frete do WooCommerce sem os campos de País e Estado. 
-
-## Observações
-
-- Ainda precisa ser testado em vários temas, somente testei com o Storefront, GeneratePress, Flatsome e Porto. Caso ocorra qualquer erro ou comportamento estranho, abra uma [nova issue](https://github.com/luizbills/wc-better-shipping-calculator-for-brazil/issues/new) **informando a versão do seu WordPress, a versão do seu WooCommerce, assim como o nome e versão do seu tema**.
-
-## Instalação
-
-1. Baixe o arquivo *zip* da [versão mais recente](https://github.com/luizbills/wc-better-shipping-calculator-for-brazil/releases).
-1. Vá no seu *wp-admin* em **Plugins > Adicionar novo** e depois em **Fazer upload do plugin**.
-1. Faça upload do zip que você baixou.
-1. Ative o plugin.
-
-*Pronto! Sua calculadora de frete agora só vai mostrar o campo de CEP.*
+Calculadora de frete do WooCommerce sem os campos de País e Estado.
 
 ## Perguntas frequentes
 

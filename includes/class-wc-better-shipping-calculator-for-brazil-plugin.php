@@ -122,13 +122,15 @@ class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 		}
 
 		register_activation_hook( $this->file, array( $this, 'install' ) );
-		
+
 		// remove city field
-		add_filter( 'woocommerce_shipping_calculator_enable_city', '__return_false' );
+		if ( apply_filters( $this->_token . '_hide_city', true ) ) {
+			add_filter( 'woocommerce_shipping_calculator_enable_city', '__return_false' );
+		}
 
 		// Load frontend JS & CSS
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ), 10 );
-	} // End __construct ()
+	}
 
 	/**
 	 * Load frontend Javascript.
@@ -137,33 +139,26 @@ class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 	 * @return  void
 	 */
 	public function enqueue_scripts () {
-		if ( is_cart() ) {
+		$condition = apply_filters( $this->_token . '_enqueue_cart_script', is_cart() );
+		if ( $condition ) {
 
-			// support only WC 2.6.x and 3+
-			$version_suffix = version_compare( WC()->version, '3.0.0', '<') ? '-' . substr( WC()->version, 0, 3) : '';
-			if ( ! empty( $version_suffix ) && version_compare( WC()->version, '2.6.0', '>=') ) return;
+			wp_enqueue_script(
+				$this->_token . '-cart',
+				esc_url( $this->assets_url ) . 'js/cart' . $this->script_suffix . '.js',
+				[ 'jquery', 'wc-country-select', 'wc-address-i18n' ],
+				$this->_version
+			);
 
-			// remove the default cart.js of the WooCommerce
-			wp_deregister_script( 'wc-cart' );
-
-			// add our custom cart.js
-			wp_register_script( $this->_token . '-cart', esc_url( $this->assets_url ) . 'js/cart' . $version_suffix . $this->script_suffix . '.js', array( 'jquery', 'wc-country-select', 'wc-address-i18n' ), $this->_version );
-			wp_enqueue_script( $this->_token . '-cart' );
-
-			wp_localize_script( $this->_token . '-cart', 'wc_cart_params', array(
-				// used by woocommerce
-				'ajax_url'                     => WC()->ajax_url(),
-				'wc_ajax_url'                  => WC_AJAX::get_endpoint( "%%endpoint%%" ),
-				'update_shipping_method_nonce' => wp_create_nonce( "update-shipping-method" ),
-				'apply_coupon_nonce'           => wp_create_nonce( "apply-coupon" ),
-				'remove_coupon_nonce'          => wp_create_nonce( "remove-coupon" ),
-
-				// used by this plugin
-				'WC_VERSION' => defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? WC()->version : '',
+			wp_localize_script( $this->_token . '-cart', $this->_token . '_params', [
 				'script_debug' => defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG,
-				'hide_country_field' => apply_filters( $this->_token . '_hide_country', 'on' ),
-				'hide_state_field' => apply_filters( $this->_token . '_hide_state', 'on' )
-			) );
+				'hide_country_field' => apply_filters( $this->_token . '_hide_country', true ),
+
+				'selectors' => apply_filters( $this->_token . '_field_selectors', [
+					'country' => apply_filters( $this->_token . '_country_selectors', '.woocommerce-shipping-calculator #calc_shipping_country' ),
+					'state' => apply_filters( $this->_token . '_state_selectors', '.woocommerce-shipping-calculator #calc_shipping_state' ),
+					'postcode' => apply_filters( $this->_token . '_postcode_selectors', '.woocommerce-shipping-calculator #calc_shipping_postcode' ),
+				] ),
+			] );
 		}
 	} // End enqueue_scripts ()
 
@@ -184,7 +179,7 @@ class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 	 * @return  void
 	 */
 	public function load_plugin_textdomain () {
-		$domain = 
+		$domain =
 
 		$locale = apply_filters( 'plugin_locale', get_locale(), $this->domain );
 

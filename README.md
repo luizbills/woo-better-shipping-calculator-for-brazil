@@ -2,6 +2,11 @@
 
 Calculadora de frete do WooCommerce sem os campos de País e Estado.
 
+## Instalação
+
+- Baixa o plugin em: https://wordpress.org/plugins/woo-better-shipping-calculator-for-brazil/
+- Ou pelo seu próprio WordPress pesquise pelo plugin **WooCommerce Better Shipping Calculator for Brazil**.
+
 ## Perguntas frequentes
 
 ### Este plugin é compatível com a versão 3.0 ou mais recente?

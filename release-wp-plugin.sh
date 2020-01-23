@@ -58,8 +58,8 @@ clear
 ROOT_PATH=$(pwd)"/"
 TEMP_GITHUB_REPO=${WP_PLUGIN_SLUG}"-git"
 TEMP_SVN_REPO=${WP_PLUGIN_SLUG}"-svn"
-SVN_REPO="http://plugins.svn.wordpress.org/"${WP_PLUGIN_SLUG}"/"
-GIT_REPO="git@github.com:"${GITHUB_REPO_OWNER}"/"${GITHUB_REPO_NAME}".git"
+SVN_REPO="http://plugins.svn.wordpress.org/${WP_PLUGIN_SLUG}/"
+GIT_REPO="https://github.com/${GITHUB_REPO_OWNER}/${GITHUB_REPO_NAME}"
 
 # DELETE OLD TEMP DIRS
 rm -Rf $ROOT_PATH$TEMP_GITHUB_REPO

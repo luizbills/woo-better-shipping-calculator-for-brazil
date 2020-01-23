@@ -1,9 +1,9 @@
-=== WooCommerce Better Shipping Calculator for Brazil ===
+=== Better Shipping Calculator for Brazilian Markets ===
 Contributors: luizbills
 Donate link: https://www.luizpb.com/en/
 Tags: woocommerce, brasil, brazil, calculadora, simulador, frete
 Requires at least: 4.6
-Tested up to: 4.9
+Tested up to: 5.3
 Stable tag: 2.0.0
 Requires PHP: 5.4
 License: GPLv2 or later
@@ -44,10 +44,10 @@ add_filter( 'wc_better_shipping_calculator_for_brazil_hide_country', function ()
 
 == Changelog ==
 
-= 2.0 =
+= 2.0.0 =
 * Initial release.
 
 == Upgrade Notice ==
 
-= 2.0 =
+= 2.0.0 =
 * Initial release

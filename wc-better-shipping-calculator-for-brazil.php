@@ -7,10 +7,10 @@
  * Author: Luiz Bills
  * Author URI: http://github.com/luizbills
  * Requires at least: 4.6
- * Tested up to: 5.3
+ * Tested up to: 5.5
  *
  * WC requires at least: 2.6
- * WC tested up to: 3.9
+ * WC tested up to: 4.5
  *
  * Text Domain: wc-better-shipping-calculator-for-brazil
  * Domain Path: /lang/

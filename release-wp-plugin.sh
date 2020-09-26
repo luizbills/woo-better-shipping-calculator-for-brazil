@@ -118,6 +118,9 @@ rm -f .coveralls.yml
 rm -f .editorconfig
 rm -f CONTRIBUTING.md
 rm -f "${0}" # don't deploy this file
+rm -f .init.sh
+rm -f .gitpod.yml
+rm -f .gitpod.dockerfile
 
 # don't deploy WordPress plugin banners and icons
 if [[ -n PLUGIN_ASSETS_DIR ]];

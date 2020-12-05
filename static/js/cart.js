@@ -177,12 +177,12 @@ window.jQuery(function ($) {
 			{
 				name: 'RR',
 				min: '69300000',
-				max: '69389999'
+				max: '69399999'
 			},
 			{
 				name: 'AC',
 				min: '69900000',
-				max: '69920000'
+				max: '69999999'
 			},
 			{
 				name: 'DF',
@@ -197,7 +197,7 @@ window.jQuery(function ($) {
 			{
 				name: 'TO',
 				min: '77000000',
-				max: '77995000'
+				max: '77999999'
 			},
 			{
 				name: 'MT',
@@ -206,8 +206,8 @@ window.jQuery(function ($) {
 			},
 			{
 				name: 'RO',
-				min: '78900000',
-				max: '78999999'
+				min: '76800000',
+				max: '76999999'
 			},
 			{
 				name: 'MS',

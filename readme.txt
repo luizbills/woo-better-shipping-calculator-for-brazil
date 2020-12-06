@@ -3,8 +3,8 @@ Contributors: luizbills
 Donate link: https://www.luizpb.com/en/
 Tags: woocommerce, brasil, brazil, calculadora, simulador, frete
 Requires at least: 4.6
-Tested up to: 5.5
-Stable tag: 2.0.0
+Tested up to: 5.6
+Stable tag: 2.0.1
 Requires PHP: 5.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -43,6 +43,9 @@ add_filter( 'wc_better_shipping_calculator_for_brazil_hide_country', function ()
 ```
 
 == Changelog ==
+
+= 2.0.1 =
+* Internal fixes
 
 = 2.0.0 =
 * Initial release.

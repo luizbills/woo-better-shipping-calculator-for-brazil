@@ -3,7 +3,7 @@ Contributors: luizbills
 Donate link: https://www.luizpb.com/en/
 Tags: woocommerce, brasil, brazil, calculadora, simulador, frete
 Requires at least: 4.6
-Tested up to: 5.6
+Tested up to: 5.7
 Stable tag: 2.0.1
 Requires PHP: 5.4
 License: GPLv2 or later

@@ -8,7 +8,7 @@
  * Author URI: http://github.com/luizbills
  *
  * WC requires at least: 2.6
- * WC tested up to: 5.1
+ * WC tested up to: 5.2
  *
  * Text Domain: wc-better-shipping-calculator-for-brazil
  * Domain Path: /lang/

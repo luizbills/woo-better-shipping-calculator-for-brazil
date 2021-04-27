@@ -30,13 +30,9 @@ Calculadora de frete do WooCommerce sem os campos de País e Estado.
 
 = Posso fazer apenas o campo de estado ser ocultado? =
 
-Sim. Adicione o código abaixo no seu `functions.php` ou use um [plugin para adicionar códigos](https://medium.com/@luizbills/adicione-php-ao-seu-tema-wordpress-sem-ter-que-editar-o-functions-php-66728752f9f4):
+Sim. Use o código abaixo:
 
-```
-add_filter( 'wc_better_shipping_calculator_for_brazil_hide_country', function () {
-  return false;
-} );
-```
+https://gist.github.com/luizbills/6058ee9e94d9b6f4058118ea227d78f2
 
 == Changelog ==
 

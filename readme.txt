@@ -4,7 +4,7 @@ Donate link: https://www.luizpb.com/en/
 Tags: woocommerce, brasil, brazil, calculadora, simulador, frete
 Requires at least: 4.6
 Tested up to: 5.7
-Stable tag: 2.0.1
+Stable tag: 2.0.2
 Requires PHP: 5.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -35,6 +35,10 @@ Sim. Use o código abaixo:
 https://gist.github.com/luizbills/6058ee9e94d9b6f4058118ea227d78f2
 
 == Changelog ==
+
+= 2.0.2 =
+* JavaScript fixes
+* Added PT-BR translation
 
 = 2.0.1 =
 * Internal fixes

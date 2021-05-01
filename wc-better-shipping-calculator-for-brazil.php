@@ -1,7 +1,7 @@
 <?php
 /*
  * Plugin Name: Better Shipping Calculator for Brazilian Markets
- * Version: 2.0.1
+ * Version: 2.0.2
  * Plugin URI: https://github.com/luizbills/wc-better-shipping-calculator-for-brazil
  * Description: Shipping calculator without Country and State fields. Works only in brazilian stores.
  * Author: Luiz Bills
@@ -11,7 +11,7 @@
  * WC tested up to: 5.2
  *
  * Text Domain: wc-better-shipping-calculator-for-brazil
- * Domain Path: /lang/
+ * Domain Path: /languages/
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;

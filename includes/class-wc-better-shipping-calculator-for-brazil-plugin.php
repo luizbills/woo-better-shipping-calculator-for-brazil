@@ -130,6 +130,9 @@ class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 
 		// Load frontend JS & CSS
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ), 10 );
+
+		// show donation button
+		add_action( 'admin_notices', array( $this, 'add_donation_notice' ) );
 	}
 
 	/**
@@ -184,7 +187,7 @@ class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 		$locale = apply_filters( 'plugin_locale', get_locale(), $this->domain );
 
 		load_textdomain( $this->domain, WP_LANG_DIR . '/' . $this->domain . '/' . $this->domain . '-' . $locale . '.mo' );
-		load_plugin_textdomain( $this->domain, false, dirname( plugin_basename( $this->file ) ) . '/lang/' );
+		load_plugin_textdomain( $this->domain, false, dirname( plugin_basename( $this->file ) ) . '/languages/' );
 
 		add_action( 'init', array( $this, 'load_localisation' ), 0 );
 	} // End load_plugin_textdomain ()
@@ -210,6 +213,58 @@ class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 		$class = 'notice notice-error';
 
 		echo '<div class="' . $class . '"><p>' . sprintf( '%s depends on %s to work!', $plugin_name, $woocommerce_link ) . '</p></div>';
+	}
+
+	/**
+	 * Shows a notice about donations in plugins page
+	 *
+	 * @since 2.0.2
+	 */
+	public function add_donation_notice () {
+		global $pagenow;
+		$plugin_data = \get_plugin_data( $this->file );
+		$plugin_name = $plugin_data['Name'];
+		$prefix = $this->_token . '_';
+
+		if ( 'plugins.php' !== $pagenow ) return;
+
+		if ( isset( $_GET[$prefix . 'dismiss_donation_notice'] ) ) {
+			update_option(
+				$prefix . 'donation_notice_dismissed',
+				time()
+			);
+		}
+
+		$notice_dismissed = (int) get_option( $prefix . 'donation_notice_dismissed' );
+		$timeout = (4 * MONTH_IN_SECONDS) + $notice_dismissed;
+		if ( time() <= $timeout ) {
+			return;
+		}
+
+		?>
+		<div id="<?= $prefix ?>donation_notice" class="notice notice-info is-dismissible">
+			<p>
+				<?= sprintf(
+					esc_html__( 'Thanks for using the %s plugin! Consider making a donation to help keep this plugin always up to date.', 'wc-better-shipping-calculator-for-brazil' ),
+					"<strong>$plugin_name</strong>",
+				); ?>
+			</p>
+			<p>
+				<a href="https://www.paypal.com/donate?hosted_button_id=29U8C2YV4BBQC&source=url" class="button button-primary">
+					<?= esc_html__( 'Donate', 'wc-better-shipping-calculator-for-brazil' ); ?> 
+				</a>
+			</p>
+		</div>
+		<script>
+			window.jQuery(function ($) {
+				const dismiss_selector = '#<?= $prefix ?>donation_notice .notice-dismiss';
+				$(document).on('click', dismiss_selector, function (evt) {
+					const current_page = window.location.origin + window.location.pathname;
+					window.location = current_page + '?<?= $prefix ?>dismiss_donation_notice';
+				})
+			})
+		</script>
+		<?php
 	}
 
 	/**

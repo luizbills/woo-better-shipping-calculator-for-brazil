@@ -1,0 +1,50 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Better Shipping Calculator for Brazilian Markets\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-05-01 16:22+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.5.2; wp-5.7.1\n"
+"X-Domain: wc-better-shipping-calculator-for-brazil"
+
+#. Name of the plugin
+msgid "Better Shipping Calculator for Brazilian Markets"
+msgstr ""
+
+#: includes/class-wc-better-shipping-calculator-for-brazil-plugin.php:254
+msgid "Donate"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "http://github.com/luizbills"
+msgstr ""
+
+#. URI of the plugin
+msgid "https://github.com/luizbills/wc-better-shipping-calculator-for-brazil"
+msgstr ""
+
+#. Author of the plugin
+msgid "Luiz Bills"
+msgstr ""
+
+#. Description of the plugin
+msgid ""
+"Shipping calculator without Country and State fields. Works only in "
+"brazilian stores."
+msgstr ""
+
+#: includes/class-wc-better-shipping-calculator-for-brazil-plugin.php:248
+#, php-format
+msgid ""
+"Thanks for using the %s plugin! Consider making a donation to help keep this "
+"plugin always up to date."
+msgstr ""

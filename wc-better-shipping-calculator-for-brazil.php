@@ -1,7 +1,7 @@
 <?php
 /*
  * Plugin Name: Better Shipping Calculator for Brazilian Markets
- * Version: 2.0.2
+ * Version: 2.0.3
  * Plugin URI: https://github.com/luizbills/wc-better-shipping-calculator-for-brazil
  * Description: Shipping calculator without Country and State fields. Works only in brazilian stores.
  * Author: Luiz Bills

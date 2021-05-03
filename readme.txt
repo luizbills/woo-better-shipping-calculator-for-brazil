@@ -36,6 +36,9 @@ https://gist.github.com/luizbills/6058ee9e94d9b6f4058118ea227d78f2
 
 == Changelog ==
 
+= 2.0.3 =
+* Fix an incompatibility with PHP 7.2 or older
+
 = 2.0.2 =
 * JavaScript fixes
 * Added PT-BR translation

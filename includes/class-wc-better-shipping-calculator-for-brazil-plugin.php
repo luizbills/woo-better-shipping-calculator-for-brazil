@@ -246,7 +246,7 @@ class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 			<p>
 				<?= sprintf(
 					esc_html__( 'Thanks for using the %s plugin! Consider making a donation to help keep this plugin always up to date.', 'wc-better-shipping-calculator-for-brazil' ),
-					"<strong>$plugin_name</strong>",
+					"<strong>$plugin_name</strong>"
 				); ?>
 			</p>
 			<p>

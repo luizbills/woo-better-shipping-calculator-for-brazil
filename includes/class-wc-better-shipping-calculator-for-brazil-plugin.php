@@ -226,7 +226,7 @@ class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 		$plugin_name = $plugin_data['Name'];
 		$prefix = $this->_token . '_';
 
-		if ( 'plugins.php' !== $pagenow ) return;
+		if ( ! in_array( $pagenow, [ 'plugins.php', 'update-core.php' ] ) ) return;
 
 		if ( isset( $_GET[$prefix . 'dismiss_donation_notice'] ) ) {
 			update_option(
@@ -236,8 +236,8 @@ class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 		}
 
 		$notice_dismissed = (int) get_option( $prefix . 'donation_notice_dismissed' );
-		$timeout = (4 * MONTH_IN_SECONDS) + $notice_dismissed;
-		if ( time() <= $timeout ) {
+		$duration = 6 * MONTH_IN_SECONDS;
+		if ( $notice_dismissed && time() <= ( $duration + $notice_dismissed ) ) {
 			return;
 		}
 
@@ -259,8 +259,12 @@ class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 			window.jQuery(function ($) {
 				const dismiss_selector = '#<?= $prefix ?>donation_notice .notice-dismiss';
 				$(document).on('click', dismiss_selector, function (evt) {
-					const current_page = window.location.origin + window.location.pathname;
-					window.location = current_page + '?<?= $prefix ?>dismiss_donation_notice';
+					$.ajax({
+						url: window.location.origin
+							+ window.location.pathname
+							+ '?<?= $prefix ?>dismiss_donation_notice',
+						method: 'GET'
+					});
 				})
 			})
 		</script>

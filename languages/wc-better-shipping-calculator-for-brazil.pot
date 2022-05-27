@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Better Shipping Calculator for Brazilian Markets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-01 16:22+0000\n"
+"POT-Creation-Date: 2022-05-27 12:57+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -16,11 +16,16 @@ msgstr ""
 "X-Loco-Version: 2.5.2; wp-5.7.1\n"
 "X-Domain: wc-better-shipping-calculator-for-brazil"
 
+#: includes/class-wc-better-shipping-calculator-for-brazil-plugin.php:199
+#, php-format
+msgid "%s depends on %s to work!"
+msgstr ""
+
 #. Name of the plugin
 msgid "Better Shipping Calculator for Brazilian Markets"
 msgstr ""
 
-#: includes/class-wc-better-shipping-calculator-for-brazil-plugin.php:254
+#: includes/class-wc-better-shipping-calculator-for-brazil-plugin.php:238
 msgid "Donate"
 msgstr ""
 
@@ -42,7 +47,7 @@ msgid ""
 "brazilian stores."
 msgstr ""
 
-#: includes/class-wc-better-shipping-calculator-for-brazil-plugin.php:248
+#: includes/class-wc-better-shipping-calculator-for-brazil-plugin.php:232
 #, php-format
 msgid ""
 "Thanks for using the %s plugin! Consider making a donation to help keep this "

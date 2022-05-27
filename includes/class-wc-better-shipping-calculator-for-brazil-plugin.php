@@ -165,15 +165,6 @@ class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 		}
 	} // End enqueue_scripts ()
 
-	/**
-	 * Load plugin localisation
-	 * @access  public
-	 * @since   1.0.0
-	 * @return  void
-	 */
-	public function load_localisation () {
-		load_plugin_textdomain( $this->domain, false, dirname( plugin_basename( $this->file ) ) . '/lang/' );
-	} // End load_localisation ()
 
 	/**
 	 * Load plugin textdomain
@@ -182,14 +173,7 @@ class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 	 * @return  void
 	 */
 	public function load_plugin_textdomain () {
-		$domain =
-
-		$locale = apply_filters( 'plugin_locale', get_locale(), $this->domain );
-
-		load_textdomain( $this->domain, WP_LANG_DIR . '/' . $this->domain . '/' . $this->domain . '-' . $locale . '.mo' );
-		load_plugin_textdomain( $this->domain, false, dirname( plugin_basename( $this->file ) ) . '/languages/' );
-
-		add_action( 'init', array( $this, 'load_localisation' ), 0 );
+		load_plugin_textdomain( $this->domain, false, dirname( plugin_basename( $this->file ) ) . '/languages' );
 	} // End load_plugin_textdomain ()
 
 
@@ -208,11 +192,11 @@ class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 	 * @since 1.0.0
 	 */
 	public function missing_dependencies_admin_notice () {
-		$plugin_name = '<b>' . __( 'WooCommerce Better Shipping Calculator for Brazil', 'wc-better-user-experience-for-brazil' ) . '</b>';
+		$plugin_data = \get_plugin_data( $this->file );
 		$woocommerce_link = '<a href="https://wordpress.org/extend/plugins/woocommerce/">WooCommerce</a>';
 		$class = 'notice notice-error';
 
-		echo '<div class="' . $class . '"><p>' . sprintf( '%s depends on %s to work!', $plugin_name, $woocommerce_link ) . '</p></div>';
+		echo '<div class="' . esc_attr( $class ) . '"><p>' . sprintf( esc_html__( '%s depends on %s to work!', 'wc-better-shipping-calculator-for-brazil' ), '<b>' . esc_html( $plugin_data['Name'] ) . '</b>', $woocommerce_link ) . '</p></div>';
 	}
 
 	/**
@@ -222,13 +206,10 @@ class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 	 */
 	public function add_donation_notice () {
 		global $pagenow;
-		$plugin_data = \get_plugin_data( $this->file );
-		$plugin_name = $plugin_data['Name'];
-		$prefix = $this->_token . '_';
-
 		if ( ! in_array( $pagenow, [ 'plugins.php', 'update-core.php' ] ) ) return;
 
-		if ( isset( $_GET[$prefix . 'dismiss_donation_notice'] ) ) {
+		$prefix = $this->_token . '_';
+		if ( isset( $_GET[ $prefix . 'dismiss_donation_notice' ] ) ) {
 			update_option(
 				$prefix . 'donation_notice_dismissed',
 				time()
@@ -240,6 +221,9 @@ class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 		if ( $notice_dismissed && time() <= ( $duration + $notice_dismissed ) ) {
 			return;
 		}
+
+		$plugin_data = \get_plugin_data( $this->file );
+		$plugin_name = esc_html( $plugin_data['Name'] );
 
 		?>
 		<div id="<?= $prefix ?>donation_notice" class="notice notice-info is-dismissible">

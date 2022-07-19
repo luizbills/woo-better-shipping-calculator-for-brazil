@@ -1,5 +1,15 @@
 # WooCommerce Better Shipping Calculator for Brazil
 
+[![WordPress Plugin Version](https://img.shields.io/wordpress/plugin/v/woo-better-shipping-calculator-for-brazil?label=Plugin%20Version&logo=wordpress&style=flat-square)](https://wordpress.org/plugins/woo-better-shipping-calculator-for-brazil/)
+[![WordPress Plugin Required PHP Version](https://img.shields.io/wordpress/plugin/required-php/woo-better-shipping-calculator-for-brazil?label=PHP%20Required&logo=php&logoColor=white&style=flat-square)](https://wordpress.org/plugins/woo-better-shipping-calculator-for-brazil/)
+[![WordPress Plugin Rating](https://img.shields.io/wordpress/plugin/stars/woo-better-shipping-calculator-for-brazil?label=Plugin%20Rating&logo=wordpress&style=flat-square)](https://wordpress.org/support/plugin/woo-better-shipping-calculator-for-brazil/reviews/)
+[![WordPress Plugin Downloads](https://img.shields.io/wordpress/plugin/dt/woo-better-shipping-calculator-for-brazil.svg?label=Downloads&logo=wordpress&style=flat-square)](https://wordpress.org/plugins/woo-better-shipping-calculator-for-brazil/advanced/)
+[![License](https://img.shields.io/badge/LICENSE-GPLv3-blue?style=flat-square)](https://wordpress.org/plugins/woo-better-shipping-calculator-for-brazil/)
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/J3J8DU80P)
+
+## Descrição
+
 Calculadora de frete do WooCommerce sem os campos de País e Estado.
 
 ## Instalação

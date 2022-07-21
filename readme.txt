@@ -1,7 +1,7 @@
-=== Better Shipping Calculator for Brazilian Markets ===
+=== Calculadora de frete melhorada para lojas brasileiras ===
 Contributors: luizbills
 Donate link: https://www.luizpb.com/en/
-Tags: woocommerce, brasil, brazil, calculadora, simulador, frete
+Tags: woocommerce, brasil, brazil, calculadora de frete, frete
 Requires at least: 4.6
 Tested up to: 6.0
 Stable tag: 2.0.4
@@ -15,7 +15,13 @@ Calculadora de frete do WooCommerce sem os campos de País e Estado.
 
 Calculadora de frete do WooCommerce sem os campos de País e Estado.
 
-**Github**: https://github.com/luizbills/wc-better-shipping-calculator-for-brazil
+= Github =
+
+https://github.com/luizbills/wc-better-shipping-calculator-for-brazil
+
+= Doações =
+
+[https://ko-fi.com/luizbills](https://ko-fi.com/luizbills)
 
 == Installation ==
 

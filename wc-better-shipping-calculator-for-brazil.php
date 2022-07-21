@@ -6,6 +6,8 @@
  * Description: Shipping calculator without Country and State fields. Works only in brazilian stores.
  * Author: Luiz Bills
  * Author URI: http://github.com/luizbills
+ * License: GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: wc-better-shipping-calculator-for-brazil
  * Domain Path: /languages/
  */

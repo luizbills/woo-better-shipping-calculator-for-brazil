@@ -47,10 +47,11 @@ https://gist.github.com/luizbills/6058ee9e94d9b6f4058118ea227d78f2
 == Changelog ==
 
 = 2.1.0 =
+* Plugin name changed to "Calculadora de frete melhorada para lojas brasileiras"
 * Now the postcode field is always visible
 * New hook filter: `wc_better_shipping_calculator_for_brazil_add_postcode_mask` (default: `true`
 * New hook filter: `wc_better_shipping_calculator_for_brazil_postcode_label` (default: `"Calcule o frete:"`)
-* Update plugin meta links
+* Fix register_activation_hook
 
 = 2.0.4 =
 * Fix pt_BR translation

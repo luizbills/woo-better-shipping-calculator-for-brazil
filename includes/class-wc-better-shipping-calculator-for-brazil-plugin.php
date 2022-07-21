@@ -2,7 +2,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
+final class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 
 	/**
 	 * The single instance of WC_Better_Shipping_Calculator_for_Brazil_Plugin.
@@ -133,6 +133,9 @@ class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 
 		// show donation button
 		add_action( 'admin_notices', array( $this, 'add_donation_notice' ) );
+
+		// add links to plugin meta
+		add_filter( 'plugin_row_meta', array( $this, 'plugin_meta' ), 10, 2 );
 	}
 
 	/**
@@ -224,35 +227,52 @@ class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 
 		$plugin_data = \get_plugin_data( $this->file );
 		$plugin_name = esc_html( $plugin_data['Name'] );
+		$donation_url = $this->get_donation_url();
 
 		?>
-		<div id="<?= $prefix ?>donation_notice" class="notice notice-info is-dismissible">
+		<div id="<?php echo $prefix ?>donation_notice" class="notice notice-info is-dismissible">
 			<p>
-				<?= sprintf(
+				<?php echo sprintf(
 					esc_html__( 'Thanks for using the %s plugin! Consider making a donation to help keep this plugin always up to date.', 'wc-better-shipping-calculator-for-brazil' ),
 					"<strong>$plugin_name</strong>"
 				); ?>
 			</p>
 			<p>
-				<a href="https://www.paypal.com/donate?hosted_button_id=29U8C2YV4BBQC&source=url" class="button button-primary">
-					<?= esc_html__( 'Donate', 'wc-better-shipping-calculator-for-brazil' ); ?> 
+				<a href="<?php echo esc_url( $donation_url ); ?>" class="button button-primary">
+					<?php echo esc_html__( 'Donate', 'wc-better-shipping-calculator-for-brazil' ); ?>
 				</a>
 			</p>
 		</div>
 		<script>
 			window.jQuery(function ($) {
-				const dismiss_selector = '#<?= $prefix ?>donation_notice .notice-dismiss';
+				const dismiss_selector = '#<?php echo $prefix ?>donation_notice .notice-dismiss';
 				$(document).on('click', dismiss_selector, function (evt) {
 					$.ajax({
 						url: window.location.origin
 							+ window.location.pathname
-							+ '?<?= $prefix ?>dismiss_donation_notice',
+							+ '?<?php echo $prefix ?>dismiss_donation_notice',
 						method: 'GET'
 					});
 				})
 			})
 		</script>
 		<?php
+	}
+
+	/**
+	 * Add more links to plugin meta.
+	 *
+	 * @since 2.1.0
+	 */
+	public function plugin_meta ( $plugin_meta, $plugin_file ) {
+		if ( plugin_basename( $this->file ) === $plugin_file ) {
+			$donation_url = esc_url( $this->get_donation_url() );
+			$forum_url = 'https://wordpress.org/support/plugin/woo-better-shipping-calculator-for-brazil/';
+
+			$plugin_meta[] = "<a href=\"$forum_url\" target='blank' rel='noopener'>" . esc_html__( 'Community support', 'wc-better-shipping-calculator-for-brazil' ) . "</a>";
+			$plugin_meta[] = "<a href=\"$donation_url\" target='blank' rel='noopener' style='color:#087f5b;font-weight:700;'>" . esc_html__( 'Donate', 'wc-better-shipping-calculator-for-brazil' ) . "</a>";
+		}
+		return $plugin_meta;
 	}
 
 	/**
@@ -301,8 +321,8 @@ class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 	} // End install ()
 
 	/**
-	 * Log the plugin version number.
-	 * @access  public
+	 * Save the plugin version number.
+	 *
 	 * @since   1.0.0
 	 * @return  void
 	 */
@@ -310,4 +330,13 @@ class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 		update_option( $this->_token . '_version', $this->_version );
 	} // End _log_version_number ()
 
+	/**
+	 * Return the URL for donations
+	 *
+	 * @since   2.1.0
+	 * @return  string
+	 */
+	protected function get_donation_url () {
+		return 'https://ko-fi.com/luizbills';
+	}
 }

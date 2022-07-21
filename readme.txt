@@ -4,7 +4,7 @@ Donate link: https://www.luizpb.com/en/
 Tags: woocommerce, brasil, brazil, calculadora de frete, frete
 Requires at least: 4.6
 Tested up to: 6.0
-Stable tag: 2.0.4
+Stable tag: 2.1.0
 Requires PHP: 7.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -41,6 +41,10 @@ Sim. Use o código abaixo:
 https://gist.github.com/luizbills/6058ee9e94d9b6f4058118ea227d78f2
 
 == Changelog ==
+
+= 2.1.0 =
+* Now the postcode field is always visible
+* Update plugin meta links
 
 = 2.0.4 =
 * Fix pt_BR translation

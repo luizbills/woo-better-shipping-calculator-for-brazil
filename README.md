@@ -1,4 +1,4 @@
-# WooCommerce Better Shipping Calculator for Brazil
+# Calculadora de frete melhorada para lojas brasileiras
 
 [![WordPress Plugin Version](https://img.shields.io/wordpress/plugin/v/woo-better-shipping-calculator-for-brazil?label=Plugin%20Version&logo=wordpress&style=flat-square)](https://wordpress.org/plugins/woo-better-shipping-calculator-for-brazil/)
 [![WordPress Plugin Required PHP Version](https://img.shields.io/wordpress/plugin/required-php/woo-better-shipping-calculator-for-brazil?label=PHP%20Required&logo=php&logoColor=white&style=flat-square)](https://wordpress.org/plugins/woo-better-shipping-calculator-for-brazil/)

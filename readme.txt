@@ -9,19 +9,23 @@ Requires PHP: 7.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Calculadora de frete do WooCommerce sem os campos de País e Estado.
+Calculadora de frete do WooCommerce sem os campos de País e Estado. Deixando somente o campo de CEP sempre vísivel.
 
 == Description ==
 
-Calculadora de frete do WooCommerce sem os campos de País e Estado.
+Calculadora de frete do WooCommerce sem os campos de Cidade, Estado e País. Deixando somente o campo de CEP sempre vísivel.
 
-= Github =
+= Ajuda e Suporte =
 
-https://github.com/luizbills/wc-better-shipping-calculator-for-brazil
+Quando precisar de ajuda, crie um tópico no [Fórum do Plugin](https://wordpress.org/support/plugin/woo-better-shipping-calculator-for-brazil/).
+
+= Contribuições =
+
+Se descobrir algum bug ou tiver sugestões, abra uma issue no nosso [repositório do Github](https://github.com/luizbills/wc-better-shipping-calculator-for-brazil).
 
 = Doações =
 
-[https://ko-fi.com/luizbills](https://ko-fi.com/luizbills)
+Me ajude a manter este plugin sempre atualizado, doando em [https://ko-fi.com/luizbills](https://ko-fi.com/luizbills).
 
 == Installation ==
 
@@ -44,6 +48,8 @@ https://gist.github.com/luizbills/6058ee9e94d9b6f4058118ea227d78f2
 
 = 2.1.0 =
 * Now the postcode field is always visible
+* New hook filter: `wc_better_shipping_calculator_for_brazil_add_postcode_mask` (default: `true`
+* New hook filter: `wc_better_shipping_calculator_for_brazil_postcode_label` (default: `"Calcule o frete:"`)
 * Update plugin meta links
 
 = 2.0.4 =

@@ -112,6 +112,8 @@ final class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 
 		$this->script_suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 
+		register_activation_hook( $this->file, array( $this, 'install' ) );
+
 		add_action( 'plugins_loaded', array( $this, 'init' ) );
 	}
 
@@ -129,8 +131,6 @@ final class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 			add_action( 'admin_notices', array( $this, 'missing_dependencies_admin_notice' ) );
 			return;
 		}
-
-		register_activation_hook( $this->file, array( $this, 'install' ) );
 
 		// remove city field
 		if ( apply_filters( $this->_prefix . 'hide_city', true ) ) {

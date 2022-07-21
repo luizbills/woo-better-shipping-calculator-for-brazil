@@ -61,6 +61,14 @@ window.jQuery(function ($) {
         }
     }
 
+    $(document.body).on('updated_wc_div', update_field_references);
+    $(document.body).on('country_to_state_changed', update_field_references);
+
+    function update_field_references() {
+        $country_select = $(selectors.country);
+        $state_select = $(selectors.state);
+    }
+
     function get_state_by_postcode(postcode) {
         var result = '';
         postcode = postcode.replace(/[^0-9]/g, '');

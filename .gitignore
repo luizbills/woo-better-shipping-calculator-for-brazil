@@ -1,2 +1,6 @@
 *.po~
 *.pot~
+/node_modules/
+/vendor/
+*.min.js
+*.min.css

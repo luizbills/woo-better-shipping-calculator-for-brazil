@@ -136,6 +136,9 @@ final class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 
 		// add links to plugin meta
 		add_filter( 'plugin_row_meta', array( $this, 'plugin_meta' ), 10, 2 );
+
+		// add shipping calculator css
+		add_action( 'woocommerce_before_shipping_calculator', array( $this, 'add_css' ) );
 	}
 
 	/**
@@ -147,7 +150,6 @@ final class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 	public function enqueue_scripts () {
 		$condition = apply_filters( $this->_token . '_enqueue_cart_script', is_cart() );
 		if ( $condition ) {
-
 			wp_enqueue_script(
 				$this->_token . '-cart',
 				esc_url( $this->assets_url ) . 'js/cart' . $this->script_suffix . '.js',
@@ -158,6 +160,7 @@ final class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 			wp_localize_script( $this->_token . '-cart', $this->_token . '_params', [
 				'script_debug' => defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG,
 				'hide_country_field' => apply_filters( $this->_token . '_hide_country', true ),
+				'add_postcode_mask' => apply_filters( $this->_token . '_add_postcode_mask', true ),
 
 				'selectors' => apply_filters( $this->_token . '_field_selectors', [
 					'country' => apply_filters( $this->_token . '_country_selectors', '.woocommerce-shipping-calculator #calc_shipping_country' ),
@@ -273,6 +276,29 @@ final class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 			$plugin_meta[] = "<a href=\"$donation_url\" target='blank' rel='noopener' style='color:#087f5b;font-weight:700;'>" . esc_html__( 'Donate', 'wc-better-shipping-calculator-for-brazil' ) . "</a>";
 		}
 		return $plugin_meta;
+	}
+
+	/**
+	 * Add CSS to always show the shipping calculator
+	 *
+	 * @since 2.1.0
+	 */
+	public function add_css () {
+		if ( is_cart() ) {
+			$postcode_label = apply_filters( $this->_token . '_postcode_label', 'Calcule o frete:' );
+			?>
+			<style>
+				.shipping-calculator-form { padding-top: 0!important; display: block!important }
+				.shipping-calculator-button { display: none!important }
+				<?php if ( $postcode_label ) : ?>
+				#calc_shipping_postcode_field::before {
+					content: "<?php echo esc_html( $postcode_label ); ?>";
+					font-weight: bold;
+				}
+				<?php endif ?>
+			</style>
+			<?php
+		}
 	}
 
 	/**

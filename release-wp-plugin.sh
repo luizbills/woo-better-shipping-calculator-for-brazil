@@ -29,7 +29,7 @@ GITHUB_REPO_NAME="wc-better-shipping-calculator-for-brazil"
 
 # folder with plugin banner and screenshots
 # note: you should commit these assets separately
-PLUGIN_ASSETS_DIR="wp-assets"
+PLUGIN_ASSETS_DIR=".wordpress-org"
 
 # ----- STOP EDITING HERE -----
 

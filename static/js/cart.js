@@ -61,30 +61,6 @@ window.jQuery(function ($) {
         }
     }
 
-    $(document.body).on('updated_wc_div', update_field_references);
-    $(document.body).on('country_to_state_changed', update_field_references);
-
-    function update_field_references() {
-        $country_select = $(selectors.country);
-
-        if (params.hide_country_field) {
-            $country_select
-                .val('BR')
-                .closest('#calc_shipping_country_field')
-                .hide();
-        } else {
-            $country_select.closest('#calc_shipping_country_field').show();
-        }
-
-        $state_select = $(selectors.state);
-
-        if ($country_select.val() === 'BR') {
-            $state_select.closest('#calc_shipping_state_field').hide();
-        } else {
-            $state_select.closest('#calc_shipping_state_field').show();
-        }
-    }
-
     function get_state_by_postcode(postcode) {
         var result = '';
         postcode = postcode.replace(/[^0-9]/g, '');

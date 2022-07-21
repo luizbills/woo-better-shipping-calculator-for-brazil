@@ -45,6 +45,14 @@ final class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 	public $_token;
 
 	/**
+	 * The prefix.
+	 * @var     string
+	 * @access  public
+	 * @since   1.0.0
+	 */
+	public $_prefix;
+
+	/**
 	 * The main plugin file.
 	 * @var     string
 	 * @access  public
@@ -92,8 +100,9 @@ final class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 	 */
 	public function __construct ( $file = '', $version = '1.0.0' ) {
 		$this->_version = $version;
-		$this->_token = 'wc_better_shipping_calculator_for_brazil';
 		$this->domain = 'wc-better-user-experience-for-brazil';
+		$this->_token = 'wc_better_shipping_calculator_for_brazil';
+		$this->_prefix = $this->_token. '_';
 
 		// Load plugin environment variables
 		$this->file = $file;
@@ -124,7 +133,7 @@ final class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 		register_activation_hook( $this->file, array( $this, 'install' ) );
 
 		// remove city field
-		if ( apply_filters( $this->_token . '_hide_city', true ) ) {
+		if ( apply_filters( $this->_prefix . 'hide_city', true ) ) {
 			add_filter( 'woocommerce_shipping_calculator_enable_city', '__return_false' );
 		}
 
@@ -139,6 +148,9 @@ final class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 
 		// add shipping calculator css
 		add_action( 'woocommerce_before_shipping_calculator', array( $this, 'add_css' ) );
+
+		// add body classes
+		add_action( 'body_class', array( $this, 'add_body_classes' ) );
 	}
 
 	/**
@@ -148,7 +160,7 @@ final class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 	 * @return  void
 	 */
 	public function enqueue_scripts () {
-		$condition = apply_filters( $this->_token . '_enqueue_cart_script', is_cart() );
+		$condition = apply_filters( $this->_prefix . 'enqueue_cart_script', is_cart() );
 		if ( $condition ) {
 			wp_enqueue_script(
 				$this->_token . '-cart',
@@ -157,17 +169,7 @@ final class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 				$this->_version
 			);
 
-			wp_localize_script( $this->_token . '-cart', $this->_token . '_params', [
-				'script_debug' => defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG,
-				'hide_country_field' => apply_filters( $this->_token . '_hide_country', true ),
-				'add_postcode_mask' => apply_filters( $this->_token . '_add_postcode_mask', true ),
-
-				'selectors' => apply_filters( $this->_token . '_field_selectors', [
-					'country' => apply_filters( $this->_token . '_country_selectors', '.woocommerce-shipping-calculator #calc_shipping_country' ),
-					'state' => apply_filters( $this->_token . '_state_selectors', '.woocommerce-shipping-calculator #calc_shipping_state' ),
-					'postcode' => apply_filters( $this->_token . '_postcode_selectors', '.woocommerce-shipping-calculator #calc_shipping_postcode' ),
-				] ),
-			] );
+			wp_localize_script( $this->_token . '-cart', $this->_prefix . 'params', $this->get_cart_script_data() );
 		}
 	} // End enqueue_scripts ()
 
@@ -214,7 +216,7 @@ final class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 		global $pagenow;
 		if ( ! in_array( $pagenow, [ 'plugins.php', 'update-core.php' ] ) ) return;
 
-		$prefix = $this->_token . '_';
+		$prefix = $this->_prefix . '';
 		if ( isset( $_GET[ $prefix . 'dismiss_donation_notice' ] ) ) {
 			update_option(
 				$prefix . 'donation_notice_dismissed',
@@ -279,17 +281,42 @@ final class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 	}
 
 	/**
+	 * Add classes to element <body>
+	 *
+	 * @since 2.1.0
+	 */
+	public function add_body_classes ( $classes ) {
+		if ( is_cart() ) {
+			$data = $this->get_cart_script_data();
+			if ( $data['hide_country_field'] ) {
+				$classes[] = 'wc-hide-country';
+			}
+		}
+		return $classes;
+	}
+
+	/**
 	 * Add CSS to always show the shipping calculator
 	 *
 	 * @since 2.1.0
 	 */
 	public function add_css () {
 		if ( is_cart() ) {
-			$postcode_label = apply_filters( $this->_token . '_postcode_label', 'Calcule o frete:' );
+			$data = $this->get_cart_script_data();
+			$postcode_label = apply_filters( $this->_prefix . 'postcode_label', 'Calcule o frete:' );
 			?>
 			<style>
-				.shipping-calculator-form { padding-top: 0!important; display: block!important }
-				.shipping-calculator-button { display: none!important }
+				<?php if ( $data['hide_country_field'] ) : ?>
+				#calc_shipping_country_field,
+				#calc_shipping_state_field,
+				<?php endif ?>
+				.shipping-calculator-button {
+					display: none!important
+				}
+				.shipping-calculator-form {
+					padding-top: 0!important;
+					display: block!important
+				}
 				<?php if ( $postcode_label ) : ?>
 				#calc_shipping_postcode_field::before {
 					content: "<?php echo esc_html( $postcode_label ); ?>";
@@ -299,6 +326,36 @@ final class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 			</style>
 			<?php
 		}
+	}
+
+	/**
+	 * Return the URL for donations
+	 *
+	 * @since   2.1.0
+	 * @return  string
+	 */
+	protected function get_donation_url () {
+		return 'https://ko-fi.com/luizbills';
+	}
+
+	/**
+	 * Return data used in static/js/cart.js
+	 *
+	 * @since   2.1.0
+	 * @return  array
+	 */
+	protected function get_cart_script_data () {
+		return [
+			'script_debug' => defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG,
+			'add_postcode_mask' => apply_filters( $this->_prefix . 'add_postcode_mask', true ),
+			'hide_country_field' => apply_filters( $this->_prefix .  '_hide_country', true ),
+
+			'selectors' => apply_filters( $this->_prefix . 'field_selectors', [
+				'country' => apply_filters( $this->_prefix . 'country_selectors', '.woocommerce-shipping-calculator #calc_shipping_country' ),
+				'state' => apply_filters( $this->_prefix . 'state_selectors', '.woocommerce-shipping-calculator #calc_shipping_state' ),
+				'postcode' => apply_filters( $this->_prefix . 'postcode_selectors', '.woocommerce-shipping-calculator #calc_shipping_postcode' ),
+			] ),
+		];
 	}
 
 	/**
@@ -353,16 +410,6 @@ final class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 	 * @return  void
 	 */
 	private function _log_version_number () {
-		update_option( $this->_token . '_version', $this->_version );
+		update_option( $this->_prefix . 'version', $this->_version );
 	} // End _log_version_number ()
-
-	/**
-	 * Return the URL for donations
-	 *
-	 * @since   2.1.0
-	 * @return  string
-	 */
-	protected function get_donation_url () {
-		return 'https://ko-fi.com/luizbills';
-	}
 }

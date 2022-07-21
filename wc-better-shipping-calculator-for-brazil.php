@@ -24,7 +24,7 @@ require_once( 'includes/class-wc-better-shipping-calculator-for-brazil-plugin.ph
  * @return object WC_Better_Shipping_Calculator_for_Brazil
  */
 function WC_Better_Shipping_Calculator_for_Brazil () {
-	$instance = WC_Better_Shipping_Calculator_for_Brazil_Plugin::instance( __FILE__, '2.0' );
+	$instance = WC_Better_Shipping_Calculator_for_Brazil_Plugin::instance( __FILE__, '2.1' );
 	return $instance;
 }
 

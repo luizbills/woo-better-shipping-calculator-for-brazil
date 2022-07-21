@@ -1,0 +1,10 @@
+{
+    "require": {
+        "php": "^7.3"
+    },
+    "require-dev": {},
+    "scripts": {
+        "deploy": "/usr/bin/env bash ./scripts/deploy",
+        "make-pot": "wp i18n make-pot . languages/wc-better-shipping-calculator-for-brazil.pot"
+    }
+}

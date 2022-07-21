@@ -1,0 +1,12 @@
+{
+    "name": "wordpress-plugin",
+    "version": "1.0.0",
+    "scripts": {
+        "postinstall": "npm run build",
+        "build": "npm run minify:js",
+        "minify:js": "esbuild static/js/cart.js --minify --outfile=static/js/cart.min.js"
+    },
+    "dependencies": {
+        "esbuild": "^0.14.49"
+    }
+}

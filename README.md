@@ -6,11 +6,15 @@
 [![WordPress Plugin Downloads](https://img.shields.io/wordpress/plugin/dt/woo-better-shipping-calculator-for-brazil.svg?label=Downloads&logo=wordpress&style=flat-square)](https://wordpress.org/plugins/woo-better-shipping-calculator-for-brazil/advanced/)
 [![License](https://img.shields.io/badge/LICENSE-GPLv3-blue?style=flat-square)](https://wordpress.org/plugins/woo-better-shipping-calculator-for-brazil/)
 
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/J3J8DU80P)
-
 ## Descrição
 
 Calculadora de frete do WooCommerce sem os campos de Cidade, Estado e País. Deixando somente o campo de CEP sempre vísivel.
+
+### Doações
+
+### Donations
+
+[![Donate](https://img.shields.io/badge/ME%20APOIE-DOAÇÕES-2b8a3e?style=for-the-badge)](https://luizpb.com/donate/)
 
 ## Instalação
 

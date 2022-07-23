@@ -10,7 +10,7 @@
 
 Calculadora de frete do WooCommerce sem os campos de Cidade, Estado e País. Deixando somente o campo de CEP sempre vísivel.
 
-### Donations
+### Doações
 
 [![Donate](https://img.shields.io/badge/ME%20APOIE-DOAÇÕES-2b8a3e?style=for-the-badge)](https://luizpb.com/donate/)
 

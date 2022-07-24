@@ -1,7 +1,7 @@
 <?php
 /*
  * Plugin Name: Calculadora de frete melhorada para lojas brasileiras
- * Version: 2.1.1
+ * Version: 2.1.2
  * Plugin URI: https://github.com/luizbills/wc-better-shipping-calculator-for-brazil
  * Description: Shipping calculator without Country and State fields. Works only in brazilian stores.
  * Author: Luiz Bills

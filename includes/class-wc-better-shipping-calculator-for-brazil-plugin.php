@@ -7,10 +7,10 @@ final class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 	/**
 	 * The single instance of WC_Better_Shipping_Calculator_for_Brazil_Plugin.
 	 * @var 	object
-	 * @access  private
+	 * @access  protected
 	 * @since 	1.0.0
 	 */
-	private static $_instance = null;
+	protected static $_instance = null;
 
 	/**
 	 * Settings class object
@@ -98,7 +98,7 @@ final class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 	 * @since   1.0.0
 	 * @return  void
 	 */
-	public function __construct ( $file = '', $version = '1.0.0' ) {
+	protected function __construct ( $file = '', $version = '1.0.0' ) {
 		$this->_version = $version;
 		$this->domain = 'wc-better-user-experience-for-brazil';
 		$this->_token = 'wc_better_shipping_calculator_for_brazil';
@@ -173,7 +173,6 @@ final class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 		}
 	} // End enqueue_scripts ()
 
-
 	/**
 	 * Load plugin textdomain
 	 * @access  public
@@ -184,20 +183,10 @@ final class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 		load_plugin_textdomain( $this->domain, false, dirname( plugin_basename( $this->file ) ) . '/languages' );
 	} // End load_plugin_textdomain ()
 
-
-	/**
-	 * Check for plugin dependencies
-	 *
-	 * @since   1.0.0
-	 */
-	private function has_dependecies () {
-		return class_exists( 'WooCommerce' );
-	}
-
 	/**
 	 * Shows an error if there is any missing plugin dependency
-	 *
-	 * @since 1.0.0
+	 * @access  public
+	 * @since   1.0.0
 	 */
 	public function missing_dependencies_admin_notice () {
 		$plugin_data = \get_plugin_data( $this->file );
@@ -209,8 +198,8 @@ final class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 
 	/**
 	 * Shows a notice about donations in plugins page
-	 *
-	 * @since 2.0.2
+	 * @access  public
+	 * @since   2.0.2
 	 */
 	public function add_donation_notice () {
 		global $pagenow;
@@ -225,7 +214,7 @@ final class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 		}
 
 		$notice_dismissed = (int) get_option( $prefix . 'donation_notice_dismissed' );
-		$duration = 6 * MONTH_IN_SECONDS;
+		$duration = 4 * MONTH_IN_SECONDS;
 		if ( $notice_dismissed && time() <= ( $duration + $notice_dismissed ) ) {
 			return;
 		}
@@ -266,8 +255,8 @@ final class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 
 	/**
 	 * Add more links to plugin meta.
-	 *
-	 * @since 2.1.0
+	 * @access  public
+	 * @since   2.1.0
 	 */
 	public function plugin_meta ( $plugin_meta, $plugin_file ) {
 		if ( plugin_basename( $this->file ) === $plugin_file ) {
@@ -282,8 +271,8 @@ final class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 
 	/**
 	 * Add classes to element <body>
-	 *
-	 * @since 2.1.0
+	 * @access  public
+	 * @since   2.1.0
 	 */
 	public function add_body_classes ( $classes ) {
 		if ( is_cart() ) {
@@ -297,8 +286,8 @@ final class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 
 	/**
 	 * Add CSS to always show the shipping calculator
-	 *
-	 * @since 2.1.0
+	 * @access  public
+	 * @since   2.1.0
 	 */
 	public function add_css () {
 		if ( is_cart() ) {
@@ -310,13 +299,16 @@ final class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 				#calc_shipping_country_field,
 				#calc_shipping_state_field,
 				<?php endif ?>
+
 				.shipping-calculator-button {
 					display: none!important
 				}
+
 				.shipping-calculator-form {
 					padding-top: 0!important;
 					display: block!important
 				}
+
 				<?php if ( $postcode_label ) : ?>
 				#calc_shipping_postcode_field::before {
 					content: "<?php echo esc_html( $postcode_label ); ?>";
@@ -329,18 +321,27 @@ final class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 	}
 
 	/**
+	 * Check for plugin dependencies
+	 * @access  protected
+	 * @since   1.0.0
+	 */
+	protected function has_dependecies () {
+		return class_exists( 'WooCommerce' );
+	}
+
+	/**
 	 * Return the URL for donations
-	 *
+	 * @access  protected
 	 * @since   2.1.0
 	 * @return  string
 	 */
 	protected function get_donation_url () {
-		return 'https://ko-fi.com/luizbills';
+		return 'https://luizpb.com/donate/';
 	}
 
 	/**
 	 * Return data used in static/js/cart.js
-	 *
+	 * @access  protected
 	 * @since   2.1.0
 	 * @return  array
 	 */
@@ -356,6 +357,27 @@ final class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 				'postcode' => apply_filters( $this->_prefix . 'postcode_selectors', '.woocommerce-shipping-calculator #calc_shipping_postcode' ),
 			] ),
 		];
+	}
+
+	/**
+	 * Installation. Runs on activation.
+	 * @access  public
+	 * @since   1.0.0
+	 * @return  void
+	 */
+	public function install () {
+		$this->log_version_number();
+	} // End install ()
+
+	/**
+	 * Save the plugin version number.
+	 *
+	 * @access  protected
+	 * @since   1.0.0
+	 * @return  void
+	 */
+	protected function log_version_number () {
+		update_option( $this->_prefix . 'version', $this->_version );
 	}
 
 	/**
@@ -377,7 +399,6 @@ final class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 
 	/**
 	 * Cloning is forbidden.
-	 *
 	 * @since 1.0.0
 	 */
 	public function __clone () {
@@ -386,30 +407,9 @@ final class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 
 	/**
 	 * Unserializing instances of this class is forbidden.
-	 *
 	 * @since 1.0.0
 	 */
 	public function __wakeup () {
 		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?' ), $this->_version );
 	} // End __wakeup ()
-
-	/**
-	 * Installation. Runs on activation.
-	 * @access  public
-	 * @since   1.0.0
-	 * @return  void
-	 */
-	public function install () {
-		$this->_log_version_number();
-	} // End install ()
-
-	/**
-	 * Save the plugin version number.
-	 *
-	 * @since   1.0.0
-	 * @return  void
-	 */
-	private function _log_version_number () {
-		update_option( $this->_prefix . 'version', $this->_version );
-	} // End _log_version_number ()
 }

@@ -1,6 +1,5 @@
 window.jQuery(function ($) {
     var params = window.wc_better_shipping_calculator_for_brazil_params;
-
     if (params == null) return;
 
     var selectors = params.selectors;

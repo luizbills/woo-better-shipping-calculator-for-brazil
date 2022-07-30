@@ -139,9 +139,6 @@ final class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 
 		// add shipping calculator css
 		add_action( 'woocommerce_before_shipping_calculator', array( $this, 'add_css' ) );
-
-		// add body classes
-		add_action( 'body_class', array( $this, 'add_body_classes' ) );
 	}
 
 	/**
@@ -261,21 +258,6 @@ final class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 	}
 
 	/**
-	 * Add classes to element <body>
-	 * @access  public
-	 * @since   2.1.0
-	 */
-	public function add_body_classes ( $classes ) {
-		if ( is_cart() ) {
-			$data = $this->get_cart_script_data();
-			if ( $data['hide_country_field'] ) {
-				$classes[] = 'wc-hide-country';
-			}
-		}
-		return $classes;
-	}
-
-	/**
 	 * Add CSS to always show the shipping calculator
 	 * @access  public
 	 * @since   2.1.0
@@ -290,7 +272,6 @@ final class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 				#calc_shipping_country_field,
 				#calc_shipping_state_field,
 				<?php endif ?>
-
 				.shipping-calculator-button {
 					display: none!important
 				}

@@ -1,29 +1,37 @@
 window.jQuery(function ($) {
-    var params = window.wc_better_shipping_calculator_for_brazil_params;
+    const params = window.wc_better_shipping_calculator_for_brazil_params;
     if (params == null) return;
 
-    var selectors = params.selectors;
-    var $state_select = null;
-    var $country_select = null;
-    var states_range = get_brazilian_states_range();
+    const selectors = params.selectors;
+    const states_range = get_brazilian_states_range();
+    let $state_select = null;
+    let $country_select = null;
+    let $city_input = null;
+    let $postcode_input = null;
 
+    // update the field elements when the cart changes
+    $(document.body).on('updated_wc_div', update_field_references);
+    $(document.body).on('country_to_state_changed', update_field_references);
     update_field_references();
 
-    // para detectar que um endereço foi preenchido manualmente
-    $(document.body).on('keyup', selectors.postcode, update_state_select);
+    // detect user typing a postcode manually
+    $(document.body).on('input', selectors.postcode, update_state_select);
+    // detect user pasting a postcode
+    $(document.body).on('focus', selectors.postcode, update_state_select);
+    update_state_select();
+    if (params.clear_city) clear_city_field(true);
 
+    // maybe add postcode input mask
     if (params.add_postcode_mask) {
-        $(document.body).on('input', selectors.postcode, add_postcode_mask);
-        const event = new Event('wc_shipping_simulator:init');
-        $(selectors.postcode).trigger('input');
-
-        function add_postcode_mask() {
+        $(document.body).on('input', selectors.postcode, apply_postcode_mask);
+        function apply_postcode_mask(evt) {
+            const input = evt.target;
             var mask = 'XXXXX-XXX';
-            var content = this.value || '';
-            this.value = '' !== content ? applyMask(content, mask) : '';
-            this.maxLength = mask.length;
+            var content = input.value || '';
+            input.value = '' !== content ? apply_mask(content, mask) : '';
+            input.maxLength = mask.length;
         }
-        function applyMask(text, mask) {
+        function apply_mask(text, mask) {
             let result = '';
             // remove all non allphanumerics
             const _text = (text + '').replace(/[^a-z0-9]/gi, '');
@@ -40,32 +48,47 @@ window.jQuery(function ($) {
             return result;
         }
     }
-
-    // para detectar que um endereço foi usando "colar" do context menu
-    $(document.body).on('mouseenter', selectors.postcode, update_state_select);
+    $(selectors.postcode).trigger('input');
 
     function update_state_select(evt) {
-        if ($country_select.val() === 'BR') {
-            var input = evt.target.value || '';
-            var postcode = input.replace(/[^0-9]/g, '');
+        const country = $country_select.val();
+        if (!country) $country_select.val('BR').trigger('change');
+        if ('BR' === $country_select.val()) {
+            let postcode = get_postcode();
+            $state_select.val(get_state_by_postcode(postcode));
+            $state_select.trigger('change');
+        }
+    }
 
-            if (postcode.length < 8) {
-                postcode = padding_right(postcode, '0', 8);
-            }
+    function get_postcode() {
+        let postcode = $postcode_input.val();
+        // sanitize postcode
+        postcode = postcode.replace(/[^0-9]/g, '').substr(0, 8);
+        // complete with zeros when have 2 or more
+        if (postcode.length >= 2 && postcode.length < 8) {
+            postcode = padding_right(postcode, '0', 8);
+        }
+        return postcode;
+    }
 
-            if ($state_select.length > 0) {
-                $state_select.val(get_state_by_postcode(postcode));
-                $state_select.trigger('change');
+    function clear_city_field(submit = false) {
+        if ('BR' !== $country_select.val()) return;
+        old = $city_input.val();
+        if (old) {
+            $city_input.val('');
+            postcode = get_postcode();
+            if (submit && old && get_postcode().length === 8) {
+                $(selectors.calculator).trigger('submit');
             }
         }
     }
 
-    $(document.body).on('updated_wc_div', update_field_references);
-    $(document.body).on('country_to_state_changed', update_field_references);
-
     function update_field_references() {
         $country_select = $(selectors.country);
         $state_select = $(selectors.state);
+        $city_input = $(selectors.city);
+        $postcode_input = $(selectors.postcode);
+        if (params.clear_city) clear_city_field(false);
     }
 
     function get_state_by_postcode(postcode) {

@@ -4,7 +4,7 @@
     "scripts": {
         "postinstall": "npm run build",
         "build": "npm run minify:js",
-        "minify:js": "esbuild static/js/cart.js --minify --outfile=static/js/cart.min.js"
+        "minify:js": "esbuild assets/js/cart.js --minify --outfile=assets/js/cart.min.js"
     },
     "dependencies": {
         "esbuild": "^0.14.49"

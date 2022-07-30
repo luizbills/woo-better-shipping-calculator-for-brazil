@@ -69,14 +69,6 @@ final class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 	public $dir;
 
 	/**
-	 * The plugin assets directory.
-	 * @var     string
-	 * @access  public
-	 * @since   1.0.0
-	 */
-	public $assets_dir;
-
-	/**
 	 * The plugin assets URL.
 	 * @var     string
 	 * @access  public
@@ -107,8 +99,7 @@ final class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 		// Load plugin environment variables
 		$this->file = $file;
 		$this->dir = dirname( $this->file );
-		$this->assets_dir = trailingslashit( $this->dir ) . 'assets';
-		$this->assets_url = esc_url( trailingslashit( plugins_url( '/static/', $this->file ) ) );
+		$this->assets_url = esc_url( trailingslashit( plugins_url( '/assets/', $this->file ) ) );
 
 		$this->script_suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 
@@ -165,7 +156,7 @@ final class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 			wp_enqueue_script(
 				$this->_token . '-cart',
 				esc_url( $this->assets_url ) . 'js/cart' . $this->script_suffix . '.js',
-				[ 'jquery', 'wc-country-select', 'wc-address-i18n' ],
+				[ 'jquery', 'wc-country-select', 'wc-address-i18n', 'wc-cart' ],
 				$this->_version
 			);
 
@@ -340,7 +331,7 @@ final class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 	}
 
 	/**
-	 * Return data used in static/js/cart.js
+	 * Return data used in assets/js/cart.js
 	 * @access  protected
 	 * @since   2.1.0
 	 * @return  array
@@ -349,11 +340,14 @@ final class WC_Better_Shipping_Calculator_for_Brazil_Plugin {
 		return [
 			'script_debug' => defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG,
 			'add_postcode_mask' => apply_filters( $this->_prefix . 'add_postcode_mask', true ),
-			'hide_country_field' => apply_filters( $this->_prefix .  '_hide_country', true ),
+			'hide_country_field' => apply_filters( $this->_prefix . 'hide_country', true ),
+			'clear_city' => apply_filters( $this->_prefix . 'clear_city_field', true ),
 
 			'selectors' => apply_filters( $this->_prefix . 'field_selectors', [
+				'calculator' => apply_filters( $this->_prefix . 'calculator_selectors', '.woocommerce-shipping-calculator' ),
 				'country' => apply_filters( $this->_prefix . 'country_selectors', '.woocommerce-shipping-calculator #calc_shipping_country' ),
 				'state' => apply_filters( $this->_prefix . 'state_selectors', '.woocommerce-shipping-calculator #calc_shipping_state' ),
+				'city' => apply_filters( $this->_prefix . 'city_selectors', '.woocommerce-shipping-calculator #calc_shipping_city' ),
 				'postcode' => apply_filters( $this->_prefix . 'postcode_selectors', '.woocommerce-shipping-calculator #calc_shipping_postcode' ),
 			] ),
 		];

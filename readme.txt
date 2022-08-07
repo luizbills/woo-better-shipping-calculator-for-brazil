@@ -4,8 +4,8 @@ Donate link: https://luizpb.com/donate/
 Tags: woocommerce, brasil, brazil, calculadora de frete, frete
 Requires at least: 4.6
 Tested up to: 6.0
-Stable tag: 2.2.0
 Requires PHP: 7.3
+Stable tag: 3.0.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,7 +13,12 @@ Calculadora de frete do WooCommerce sem os campos de País e Estado. Deixando so
 
 == Description ==
 
-Calculadora de frete do WooCommerce sem os campos de Cidade, Estado e País. Deixando somente o campo de CEP sempre vísivel.
+Calculadora de frete do WooCommerce otimizada para lojas brasileiras:
+- Remove os campos de país, estado e cidade.
+- Deixa o campo de CEP sempre vísivel.
+- Adiciona uma mensagem informando: "Os prazos de entrega começam a contar a partir da confirmação do pagamento."
+
+Algumas dessas funcionalidades podem ser modificadas ou desativadas por hooks. Mais detalhes no na [seção de perguntas frequentes (FAQ)](#faq).
 
 = Ajuda e Suporte =
 
@@ -29,7 +34,9 @@ Me ajude a manter este plugin sempre atualizado, doando em [https://luizpb.com/d
 
 == Installation ==
 
-1. Instale o plugin pela página "Plugins" no seu wp-admin e ative-o.
+1. Acesse o seu WordPress e vá no menu **Plugins > Adicionar novo**.
+1. Pesquise por "Calculadora de frete melhorada para lojas brasileiras".
+1. Localize o plugin, em "Instalar agora" e depois em "Ativar".
 1. Pronto! Não precisa fazer mais nada.
 
 == Screenshots ==
@@ -38,13 +45,18 @@ Me ajude a manter este plugin sempre atualizado, doando em [https://luizpb.com/d
 
 == Frequently Asked Questions ==
 
-= Posso fazer apenas o campo de estado ser ocultado? =
+= Como posso mudar aquela mensagem sobre o prazo de entrega? =
 
-Sim. Use o código abaixo:
+TODO
 
-https://gist.github.com/luizbills/6058ee9e94d9b6f4058118ea227d78f2
+= Como posso mudar ocultar/remover mensagem sobre o prazo de entrega? =
+
+TODO
 
 == Changelog ==
+
+= 3.0.0 =
+* Tweak: clear city input field to prevent unexpected results.
 
 = 2.2.0 =
 * Tweak: clear city input field to prevent unexpected results.

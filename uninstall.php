@@ -7,6 +7,11 @@ Reference: https://developer.wordpress.org/plugins/plugin-basics/uninstall-metho
 */
 defined( 'WP_UNINSTALL_PLUGIN' ) || exit( 1 );
 
-$prefix = 'wc_better_shipping_calculator_for_brazil_';
-delete_option( $prefix . 'version' );
-delete_option( $prefix . 'donation_notice_dismissed' );
+$config = require_once __DIR__ . '/config.php';
+
+$prefix = $config['PREFIX'];
+$options_query = $wpdb->prepare(
+    "DELETE FROM {$wpdb->prefix}options WHERE option_name LIKE %s",
+    $prefix . '%'
+);
+$wpdb->query( $options_query );

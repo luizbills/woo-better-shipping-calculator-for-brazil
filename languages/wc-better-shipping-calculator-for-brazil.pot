@@ -3,13 +3,13 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Calculadora de frete melhorada para lojas brasileiras 3.0.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wc-better-shipping-calculator-for-brazil\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woo-better-shipping-calculator-for-brazil\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-08-08T15:57:05-03:00\n"
+"POT-Creation-Date: 2022-08-08T16:35:23-03:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: wc-better-shipping-calculator-for-brazil\n"
@@ -34,6 +34,15 @@ msgstr ""
 msgid "https://luizpb.com"
 msgstr ""
 
+#: classes/Admin/Plugin_Meta.php:17
+msgid "Community support"
+msgstr ""
+
+#: classes/Admin/Plugin_Meta.php:19
+#: templates/notice-donation.php:16
+msgid "Donate"
+msgstr ""
+
 #: classes/Shipping_Calculator.php:52
 msgid "Calculate shipping:"
 msgstr ""
@@ -52,7 +61,16 @@ msgstr ""
 msgid "Install and activate the %s plugin."
 msgstr ""
 
+#. translators: %1$s is replaced with plugin name and %2$s with 5 stars
+#: templates/notice-donation.php:7
+msgid "Help us keep the %1$s plugin free and always up to date making a donation or rating %2$s on WordPress.org."
+msgstr ""
+
+#: templates/notice-donation.php:17
+msgid "Make a review"
+msgstr ""
+
 #. translators: %1$s is replaced with plugin name and %2$s with an error message
-#: main.php:20
+#: wc-better-shipping-calculator-for-brazil.php:35
 msgid "Error on %1$s plugin activation: %2$s"
 msgstr ""

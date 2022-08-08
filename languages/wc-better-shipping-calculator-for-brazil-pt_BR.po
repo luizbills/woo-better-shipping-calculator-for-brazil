@@ -4,10 +4,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Calculadora de frete melhorada para lojas brasileiras "
 "3.0.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wc-better-"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woo-better-"
 "shipping-calculator-for-brazil\n"
-"POT-Creation-Date: 2022-08-08T15:57:05-03:00\n"
-"PO-Revision-Date: 2022-08-08 15:57-0300\n"
+"POT-Creation-Date: 2022-08-08T16:35:23-03:00\n"
+"PO-Revision-Date: 2022-08-08 16:38-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -42,6 +42,14 @@ msgstr "Luiz Bills"
 msgid "https://luizpb.com"
 msgstr "https://luizpb.com/pt"
 
+#: classes/Admin/Plugin_Meta.php:17
+msgid "Community support"
+msgstr "Suporte da comunidade"
+
+#: classes/Admin/Plugin_Meta.php:19 templates/notice-donation.php:16
+msgid "Donate"
+msgstr "Faça uma doação"
+
 #: classes/Shipping_Calculator.php:52
 msgid "Calculate shipping:"
 msgstr "Calcule o frete:"
@@ -60,7 +68,20 @@ msgstr "Está faltando algumas dependências do plugin %s:"
 msgid "Install and activate the %s plugin."
 msgstr "Instale e ative o plugin %s."
 
+#. translators: %1$s is replaced with plugin name and %2$s with 5 stars
+#: templates/notice-donation.php:7
+msgid ""
+"Help us keep the %1$s plugin free and always up to date making a donation or "
+"rating %2$s on WordPress.org."
+msgstr ""
+"Ajude-nos a manter o plugin %1$s gratuito e sempre atualizado fazendo uma "
+"doação ou uma avaliação com %2$s no WordPress.org."
+
+#: templates/notice-donation.php:17
+msgid "Make a review"
+msgstr "Faça uma avaliação"
+
 #. translators: %1$s is replaced with plugin name and %2$s with an error message
-#: main.php:20
+#: wc-better-shipping-calculator-for-brazil.php:35
 msgid "Error on %1$s plugin activation: %2$s"
 msgstr "Erro na ativação do plugin %1$s: %2$s"

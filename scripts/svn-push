@@ -20,14 +20,14 @@
 
 # The slug of your WordPress.org plugin
 # You need publish your plugin first: https://wordpress.org/plugins/developers/add/
-WP_PLUGIN_SLUG="your_wp_plugin_slug"
+WP_PLUGIN_SLUG="woo-better-shipping-calculator-for-brazil"
 
 # The GITHUB repository
 # format: username/repository (example: luizbills/wp-tweaks)
-GITHUB_REPO_SLUG="your_gh_username/your_gh_repo"
+GITHUB_REPO_SLUG="luizbills/wc-better-shipping-calculator-for-brazil"
 
 # The main Github repository branch
-MAIN_BRANCH="master";
+MAIN_BRANCH="master"
 
 # directory with plugin icon, banner and screenshots used in https://wordpress.org
 PLUGIN_ASSETS_DIR=".wordpress-org"

@@ -1,6 +1,6 @@
 === Calculadora de frete melhorada para lojas brasileiras ===
 Contributors: luizbills
-Donate link: https://luizpb.com/donate/
+Donate link: https://luizpb.com/donate
 Tags: woocommerce, brasil, brazil, calculadora de frete, frete
 Requires at least: 4.6
 Tested up to: 6.0

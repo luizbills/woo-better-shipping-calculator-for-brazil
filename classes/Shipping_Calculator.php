@@ -66,7 +66,6 @@ final class Shipping_Calculator {
 		}
 
 		.shipping-calculator-form {
-			padding-top: 0!important;
 			display: block!important;
 		}
 		</style>
@@ -87,11 +86,12 @@ final class Shipping_Calculator {
 		wp_localize_script(
 			h::prefix( 'frontend' ),
 			h::prefix( 'params' ),
-			[
-				'selectors' => apply_filters( h::prefix( 'field_selectors' ), [
-					'postcode' => '.woocommerce-shipping-calculator #calc_shipping_postcode',
-				] ),
-			]
+			apply_filters( h::prefix( 'frontend_params' ), [
+				'postcode_placeholder' => esc_attr__( 'Type your postcode', 'wc-better-shipping-calculator-for-brazil' ),
+				'selectors' => [
+					'postcode' => '#calc_shipping_postcode',
+				],
+			] ),
 		);
 	}
 }

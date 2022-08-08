@@ -1,15 +1,15 @@
 # Copyright (C) 2022 Luiz Bills
-# This file is distributed under the same license as the Calculadora de frete melhorada para lojas brasileiras plugin.
+# This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Calculadora de frete melhorada para lojas brasileiras 2.1.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wc-better-shipping-calculator-for-brazil-git\n"
+"Project-Id-Version: Calculadora de frete melhorada para lojas brasileiras 3.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woo-better-shipping-calculator-for-brazil\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-07-21T13:45:34-03:00\n"
+"POT-Creation-Date: 2022-08-08T16:35:23-03:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: wc-better-shipping-calculator-for-brazil\n"
@@ -23,7 +23,7 @@ msgid "https://github.com/luizbills/wc-better-shipping-calculator-for-brazil"
 msgstr ""
 
 #. Description of the plugin
-msgid "Shipping calculator without Country and State fields. Works only in brazilian stores."
+msgid "Calculadora de frete do WooCommerce otimizada para lojas brasileiras: remove dos campos de país, estado e cidade. E alguns outros ajustes."
 msgstr ""
 
 #. Author of the plugin
@@ -31,22 +31,46 @@ msgid "Luiz Bills"
 msgstr ""
 
 #. Author URI of the plugin
-msgid "http://github.com/luizbills"
+msgid "https://luizpb.com"
 msgstr ""
 
-#: includes/class-wc-better-shipping-calculator-for-brazil-plugin.php:205
-msgid "%s depends on %s to work!"
+#: classes/Admin/Plugin_Meta.php:17
+msgid "Community support"
 msgstr ""
 
-#: includes/class-wc-better-shipping-calculator-for-brazil-plugin.php:239
-msgid "Thanks for using the %s plugin! Consider making a donation to help keep this plugin always up to date."
-msgstr ""
-
-#: includes/class-wc-better-shipping-calculator-for-brazil-plugin.php:245
-#: includes/class-wc-better-shipping-calculator-for-brazil-plugin.php:276
+#: classes/Admin/Plugin_Meta.php:19
+#: templates/notice-donation.php:16
 msgid "Donate"
 msgstr ""
 
-#: includes/class-wc-better-shipping-calculator-for-brazil-plugin.php:275
-msgid "Community support"
+#: classes/Shipping_Calculator.php:52
+msgid "Calculate shipping:"
+msgstr ""
+
+#: classes/Shipping_Calculator.php:90
+msgid "Type your postcode"
+msgstr ""
+
+#. translators: %s is replaced with plugin name
+#: core/Dependencies.php:72
+msgid "Missing dependencies for %s:"
+msgstr ""
+
+#. translators: %s is replaced with a required plugin name
+#: dependencies.php:32
+msgid "Install and activate the %s plugin."
+msgstr ""
+
+#. translators: %1$s is replaced with plugin name and %2$s with 5 stars
+#: templates/notice-donation.php:7
+msgid "Help us keep the %1$s plugin free and always up to date making a donation or rating %2$s on WordPress.org."
+msgstr ""
+
+#: templates/notice-donation.php:17
+msgid "Make a review"
+msgstr ""
+
+#. translators: %1$s is replaced with plugin name and %2$s with an error message
+#: wc-better-shipping-calculator-for-brazil.php:35
+msgid "Error on %1$s plugin activation: %2$s"
 msgstr ""

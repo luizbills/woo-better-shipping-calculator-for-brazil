@@ -1,31 +1,44 @@
 <?php
 /*
- * Plugin Name: Calculadora de frete melhorada para lojas brasileiras
- * Version: 2.2.0
- * Plugin URI: https://github.com/luizbills/wc-better-shipping-calculator-for-brazil
- * Description: Shipping calculator without Country and State fields. Works only in brazilian stores.
- * Author: Luiz Bills
- * Author URI: http://github.com/luizbills
- * License: GPLv2 or later
- * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: wc-better-shipping-calculator-for-brazil
- * Domain Path: /languages/
- */
+Plugin Name: Calculadora de frete melhorada para lojas brasileiras
+Plugin URI: https://github.com/luizbills/wc-better-shipping-calculator-for-brazil
+Description: Calculadora de frete do WooCommerce otimizada para lojas brasileiras: remove dos campos de país, estado e cidade. E alguns outros ajustes.
+Version: 3.0.0
+Author: Luiz Bills
+Author URI: https://luizpb.com
+Requires PHP: 7.3
+Requires at least: 4.6
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: wc-better-shipping-calculator-for-brazil
+Domain Path: /languages
+*/
 
-if ( ! defined( 'ABSPATH' ) ) exit;
+// prevents your PHP files from being executed via direct browser access
+defined( 'WPINC' ) || exit( 1 );
 
-// Load plugin class files
-require_once( 'includes/class-wc-better-shipping-calculator-for-brazil-plugin.php' );
+load_plugin_textdomain( 'wc-better-shipping-calculator-for-brazil', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 
-/**
- * Returns the main instance of WC_Better_Shipping_Calculator_for_Brazil to prevent the need to use globals.
- *
- * @since  1.0.0
- * @return object WC_Better_Shipping_Calculator_for_Brazil
- */
-function WC_Better_Shipping_Calculator_for_Brazil () {
-	$instance = WC_Better_Shipping_Calculator_for_Brazil_Plugin::instance( __FILE__, '2.1' );
-	return $instance;
+try {
+	// check composer autoload
+	$composer_autoload = __DIR__ . '/vendor/autoload.php';
+	if ( ! file_exists( $composer_autoload ) ) {
+		throw new \Error( $composer_autoload . ' does not exist' );
+	}
+	include_once $composer_autoload;
+} catch ( Throwable $e ) {
+	return add_action( 'admin_notices', function () use ( $e ) {
+		if ( ! current_user_can( 'install_plugins' ) ) return;
+		list( $plugin_name ) = get_file_data( __FILE__, [ 'plugin name' ] );
+		$message = sprintf(
+			/* translators: %1$s is replaced with plugin name and %2$s with an error message */
+			esc_html__( 'Error on %1$s plugin activation: %2$s', 'wc-better-shipping-calculator-for-brazil' ),
+			'<strong>' . esc_html( $plugin_name ) . '</strong>',
+			'<br><code>' . esc_html( $e->getMessage() ) . '</code>'
+		);
+		echo "<div class='notice notice-error'><p>$message</p></div>";
+	} );
 }
 
-WC_Better_Shipping_Calculator_for_Brazil();
+// run the plugin
+\WC_Better_Shipping_Calculator_for_Brazil\Core\Main::start_plugin( __FILE__ );

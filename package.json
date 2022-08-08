@@ -1,12 +1,12 @@
 {
-    "name": "wordpress-plugin",
-    "version": "1.0.0",
+    "name": "shipping-simulator-for-woocommerce",
     "scripts": {
-        "postinstall": "npm run build",
-        "build": "npm run minify:js",
-        "minify:js": "esbuild assets/js/cart.js --minify --outfile=assets/js/cart.min.js"
+        "start": "./scripts/bundle --watch",
+        "build": "./scripts/bundle",
+        "postinstall": "npm run build"
     },
-    "dependencies": {
+    "devDependencies": {
+        "cli-color": "^2.0.3",
         "esbuild": "^0.14.49"
     }
 }

@@ -7,6 +7,8 @@ Reference: https://developer.wordpress.org/plugins/plugin-basics/uninstall-metho
 */
 defined( 'WP_UNINSTALL_PLUGIN' ) || exit( 1 );
 
+global $wpdb;
+
 $config = require_once __DIR__ . '/config.php';
 
 $prefix = $config['PREFIX'];

@@ -8,8 +8,12 @@ final class Brazilian_States {
     public static function get_state_from_postcode ( $postcode ) {
         $postcode = intval( ltrim( h::sanitize_postcode( $postcode ), '0' ) );
         foreach ( self::get_states() as $state => $range ) {
-            if ( $postcode >= $range[0] && $postcode <= $range[1] ) {
-                return $state;
+            $i = 0;
+            while ( $i < count( $range ) ) {
+                if ( $postcode >= $range[ $i ] && $postcode <= $range[ $i + 1] ) {
+                    return $state;
+                }
+                $i += 2;
             }
         }
         return null;
@@ -17,7 +21,7 @@ final class Brazilian_States {
 
     protected static function get_states () {
         return [
-            'SP' => [ 1000000, 19999999 ],
+            'SP' => [ 1000000, 19999999 ], /* 1000000 is 01000-000 */
             'RJ' => [ 20000000, 28999999 ],
             'ES' => [ 29000000, 29999999 ],
             'MG' => [ 30000000, 39999999 ],
@@ -32,11 +36,20 @@ final class Brazilian_States {
             'MA' => [ 65000000, 65999999 ],
             'PA' => [ 66000000, 68899999 ],
             'AP' => [ 68900000, 68999999 ],
-            'AM' => [ 69000000, 69899999 ],
+            'AM' => [
+                69000000, 69299999,
+                69400000, 69899999
+            ],
             'RR' => [ 69300000, 69399999 ],
             'AC' => [ 69900000, 69999999 ],
-            'DF' => [ 70000000, 73699999 ],
-            'GO' => [ 72800000, 76799999 ],
+            'DF' => [
+                70000000, 72799999,
+                73000000, 73699999
+            ],
+            'GO' => [
+                72800000, 72999999,
+                73700000, 76799999
+            ],
             'TO' => [ 77000000, 77999999 ],
             'MT' => [ 78000000, 78899999 ],
             'RO' => [ 76800000, 76999999 ],

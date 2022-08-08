@@ -11,5 +11,7 @@ defined( 'WPINC' ) || exit( 1 );
 // } );
 
 return [
-	[ Shipping_Calculator::class, 10 ], // 10 is priority
+	Shipping_Calculator::class,
+	Admin\Notices::class,
+	Admin\Plugin_Meta::class,
 ];

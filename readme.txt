@@ -49,30 +49,26 @@ Me ajude a manter este plugin sempre atualizado, doando em [https://luizpb.com/d
 
 Use o seguinte código:
 
-```
-add_action(
+`add_filter(
     'wc_better_shipping_calculator_for_brazil_postcode_label',
     function () {
         return 'seu novo texto';
     }
-);
-```
+);`
 
 = Como posso REMOVER o texto "Calcule o frete"? =
 
 Use o seguinte código:
 
-```
-add_action(
+`add_filter(
     'wc_better_shipping_calculator_for_brazil_postcode_label',
     '__return_null'
-);
-```
+);`
 
 == Changelog ==
 
 = 3.0.0 =
-* Tweak: Code refactored for better compatility.
+* Tweak: Code refactored for better compatibility.
 * Break: Removed several hooks.
 
 = 2.2.0 =

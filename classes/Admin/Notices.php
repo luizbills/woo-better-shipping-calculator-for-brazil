@@ -15,7 +15,7 @@ final class Notices {
 		if ( ! current_user_can( 'administrator' ) ) return;
 
 		$cookie = h::prefix( 'donation_notice_closed' );
-		if ( 'yes' === $_COOKIE[ $cookie ] ) return;
+		if ( 'yes' === h::get( $_COOKIE[ $cookie ] ) ) return;
 
 		global $pagenow;
 		$in_plugins = 'plugins.php' === $pagenow;

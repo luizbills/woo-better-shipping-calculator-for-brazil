@@ -6,8 +6,8 @@ msgstr ""
 "3.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wc-better-"
 "shipping-calculator-for-brazil\n"
-"POT-Creation-Date: 2022-08-08T14:31:18-03:00\n"
-"PO-Revision-Date: 2022-08-08 14:39-0300\n"
+"POT-Creation-Date: 2022-08-08T15:57:05-03:00\n"
+"PO-Revision-Date: 2022-08-08 15:57-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -46,6 +46,10 @@ msgstr "https://luizpb.com/pt"
 msgid "Calculate shipping:"
 msgstr "Calcule o frete:"
 
+#: classes/Shipping_Calculator.php:90
+msgid "Type your postcode"
+msgstr "Digite seu CEP"
+
 #. translators: %s is replaced with plugin name
 #: core/Dependencies.php:72
 msgid "Missing dependencies for %s:"
@@ -58,5 +62,5 @@ msgstr "Instale e ative o plugin %s."
 
 #. translators: %1$s is replaced with plugin name and %2$s with an error message
 #: main.php:20
-msgid "Error on %1$s plugin  activation: %2$s"
+msgid "Error on %1$s plugin activation: %2$s"
 msgstr "Erro na ativação do plugin %1$s: %2$s"

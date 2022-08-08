@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-08-08T14:38:53-03:00\n"
+"POT-Creation-Date: 2022-08-08T15:57:05-03:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: wc-better-shipping-calculator-for-brazil\n"
@@ -36,6 +36,10 @@ msgstr ""
 
 #: classes/Shipping_Calculator.php:52
 msgid "Calculate shipping:"
+msgstr ""
+
+#: classes/Shipping_Calculator.php:90
+msgid "Type your postcode"
 msgstr ""
 
 #. translators: %s is replaced with plugin name

@@ -2,13 +2,13 @@ window.jQuery(($) => {
     const params = window.wc_better_shipping_calculator_for_brazil_params || {};
     const refs = {};
     const body = $(document.body);
+    const placeholder = params.postcode_placeholder;
 
     body.on('updated_wc_div', update_refs);
     body.on('country_to_state_changed', update_refs);
     update_refs();
 
     body.on('keyup', params.selectors.postcode, apply_postcode_mask);
-    apply_postcode_mask();
 
     function apply_postcode_mask() {
         const value = refs.postcode.val();
@@ -22,5 +22,12 @@ window.jQuery(($) => {
 
     function update_refs() {
         refs.postcode = $(params.selectors.postcode);
+
+        // update placeholder and title
+        if (placeholder) {
+            refs.postcode.prop('placeholder', placeholder);
+            refs.postcode.prop('title', placeholder);
+        }
+        apply_postcode_mask();
     }
 });

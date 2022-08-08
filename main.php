@@ -17,7 +17,7 @@ try {
 		list( $plugin_name ) = get_file_data( __FILE__, [ 'plugin name' ] );
 		$message = sprintf(
 			/* translators: %1$s is replaced with plugin name and %2$s with an error message */
-			esc_html__( 'Error on %1$s plugin  activation: %2$s', 'wc-better-shipping-calculator-for-brazil' ),
+			esc_html__( 'Error on %1$s plugin activation: %2$s', 'wc-better-shipping-calculator-for-brazil' ),
 			'<strong>' . esc_html( $plugin_name ) . '</strong>',
 			'<br><code>' . esc_html( $e->getMessage() ) . '</code>'
 		);

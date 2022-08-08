@@ -11,5 +11,5 @@ defined( 'WPINC' ) || exit( 1 );
 // } );
 
 return [
-	[ Cart::class, 10 ], // 10 is priority
+	[ Shipping_Calculator::class, 10 ], // 10 is priority
 ];

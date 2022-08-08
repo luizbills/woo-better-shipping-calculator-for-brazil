@@ -16,7 +16,6 @@ Calculadora de frete do WooCommerce sem os campos de País e Estado. Deixando so
 Calculadora de frete do WooCommerce otimizada para lojas brasileiras:
 - Remove os campos de país, estado e cidade.
 - Deixa o campo de CEP sempre vísivel.
-- Adiciona uma mensagem informando: "Os prazos de entrega começam a contar a partir da confirmação do pagamento."
 
 Algumas dessas funcionalidades podem ser modificadas ou desativadas por hooks. Mais detalhes no na [seção de perguntas frequentes (FAQ)](#faq).
 
@@ -41,22 +40,40 @@ Me ajude a manter este plugin sempre atualizado, doando em [https://luizpb.com/d
 
 == Screenshots ==
 
-1. calculadora de frete somente com o campo de CEP.
+1. Comparando antes e depois de instalar o plugin.
+1. Resultado final.
 
 == Frequently Asked Questions ==
 
-= Como posso mudar aquela mensagem sobre o prazo de entrega? =
+= Como posso MUDAR o texto "Calcule o frete"? =
 
-TODO
+Use o seguinte código:
 
-= Como posso mudar ocultar/remover mensagem sobre o prazo de entrega? =
+```
+add_action(
+    'wc_better_shipping_calculator_for_brazil_postcode_label',
+    function () {
+        return 'seu novo texto';
+    }
+);
+```
 
-TODO
+= Como posso REMOVER o texto "Calcule o frete"? =
+
+Use o seguinte código:
+
+```
+add_action(
+    'wc_better_shipping_calculator_for_brazil_postcode_label',
+    '__return_null'
+);
+```
 
 == Changelog ==
 
 = 3.0.0 =
-* Tweak: clear city input field to prevent unexpected results.
+* Tweak: Code refactored for better compatility.
+* Break: Removed several hooks.
 
 = 2.2.0 =
 * Tweak: clear city input field to prevent unexpected results.

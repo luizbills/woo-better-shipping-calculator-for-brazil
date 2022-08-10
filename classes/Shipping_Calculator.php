@@ -73,6 +73,8 @@ final class Shipping_Calculator {
 	}
 
 	public function add_extra_js () {
+		if ( ! is_cart() ) return;
+
 		$suffix = h::get_defined( 'SCRIPT_DEBUG' ) ? '' : '.min';
 
 		wp_enqueue_script(

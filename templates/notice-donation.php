@@ -8,9 +8,10 @@ $message = sprintf(
     '<strong>' . esc_html( h::config_get( 'NAME' ) ) . '</strong>',
     $five_stars
 );
+$id = esc_attr( h::prefix( 'notice_donation' ) );
 ?>
 
-<div class="<?php echo esc_attr( $args['class'] ) ?>" id="wc_shipping_sim_notice_donation">
+<div class="<?php echo esc_attr( $args['class'] ) ?>" id="<?php echo $id ?>">
     <p><?php echo $message; ?></p>
     <p>
         <a href="<?php echo esc_url( h::config_get( 'DONATION_URL' ) ) ?>" target="_blank" class="button button-primary"><?php esc_html_e( 'Donate', 'wc-better-shipping-calculator-for-brazil' ); ?></a>
@@ -24,7 +25,7 @@ $message = sprintf(
 
 <script>
     window.addEventListener('DOMContentLoaded', () => {
-        const notice = document.querySelector('#wc_shipping_sim_notice_donation .notice-dismiss');
+        const notice = document.querySelector('#<?php echo $id ?> .notice-dismiss');
         notice.addEventListener('click', (evt) => {
             const cookie = '<?php echo esc_js( "{$args['cookie']}=yes;max-age={$args['cookie_max_age']};secure;samesite=strict" ) ?>';
             document.cookie = cookie;

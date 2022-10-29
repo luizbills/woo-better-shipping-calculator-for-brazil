@@ -7,6 +7,6 @@
     },
     "devDependencies": {
         "cli-color": "^2.0.3",
-        "esbuild": "^0.14.49"
+        "esbuild": "^0.14.54"
     }
 }

@@ -175,6 +175,7 @@ rm -f CONTRIBUTING.md
 rm -f .gitpod.dockerfile
 rm -f .gitpod.yml
 rm -f .prettierrc.json
+rm -f pnpm-lock.yaml
 
 echo ""
 read -p "PRESS [ENTER] TO DEPLOY BRANCH "${BRANCH}

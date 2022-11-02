@@ -67,6 +67,7 @@ final class Shipping_Calculator {
 
 		.shipping-calculator-form {
 			display: block!important;
+			height: auto!important;
 		}
 		</style>
 		<?php

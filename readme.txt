@@ -5,7 +5,7 @@ Tags: woocommerce, brasil, brazil, calculadora de frete, frete
 Requires at least: 4.6
 Tested up to: 6.1
 Requires PHP: 7.3
-Stable tag: 3.0.2
+Stable tag: 3.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -67,6 +67,9 @@ Use o seguinte código:
 );`
 
 == Changelog ==
+
+= 3.1.0 =
+* Feature: Now the postcode field has 'tel' type (to show mobile numeric keyboard).
 
 = 3.0.2 =
 * Fix: donation notice was not closing

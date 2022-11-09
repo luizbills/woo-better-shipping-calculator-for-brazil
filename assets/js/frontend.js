@@ -6,6 +6,7 @@ window.jQuery(($) => {
     const body = $(document.body);
     const placeholder = params.postcode_placeholder;
     const selectors = params.selectors;
+    const input_type = params.postcode_input_type;
 
     body.on('updated_wc_div', update_refs);
     body.on('country_to_state_changed', update_refs);
@@ -29,6 +30,9 @@ window.jQuery(($) => {
         if (placeholder) {
             refs.postcode.prop('placeholder', placeholder);
             refs.postcode.prop('title', placeholder);
+        }
+        if (input_type) {
+            refs.postcode.prop('type', input_type);
         }
         apply_postcode_mask();
     }

@@ -15,8 +15,9 @@ Calculadora de frete do WooCommerce sem os campos de País e Estado. Deixando so
 
 Calculadora de frete do WooCommerce otimizada para lojas brasileiras:
 
-* Remove os campos de país, estado e cidade.
 * Deixa o campo de CEP sempre vísivel.
+* Remove os campos de país, estado e cidade da calculadora.
+* Mostra teclado número em aparelhos móveis.
 
 Algumas dessas funcionalidades podem ser modificadas ou desativadas por hooks. Mais detalhes no na [seção de perguntas frequentes (FAQ)](#faq).
 

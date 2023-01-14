@@ -1,11 +1,11 @@
 === Calculadora de frete melhorada para lojas brasileiras ===
 Contributors: luizbills
 Donate link: https://luizpb.com/donate
-Tags: woocommerce, brasil, brazil, calculadora de frete, frete
+Tags: woocommerce, brasil, brazil, calculadora de frete, frete, cep
 Requires at least: 4.6
 Tested up to: 6.1
 Requires PHP: 7.3
-Stable tag: 3.1.0
+Stable tag: 3.1.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,6 +18,7 @@ Calculadora de frete do WooCommerce otimizada para lojas brasileiras:
 * Deixa o campo de CEP sempre vísivel.
 * Remove os campos de país, estado e cidade da calculadora.
 * Mostra teclado número em aparelhos móveis.
+* Permite que apenas números sejam digitados no campo de CEP.
 
 Algumas dessas funcionalidades podem ser modificadas ou desativadas por hooks. Mais detalhes no na [seção de perguntas frequentes (FAQ)](#faq).
 
@@ -68,6 +69,9 @@ Use o seguinte código:
 );`
 
 == Changelog ==
+
+= 3.1.1 =
+* Fix: Sometimes the postcode field mask was not working on new shipping calculations.
 
 = 3.1.0 =
 * Feature: Now the postcode field has 'tel' type (to show mobile numeric keyboard).

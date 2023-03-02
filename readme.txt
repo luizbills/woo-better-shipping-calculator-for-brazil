@@ -20,7 +20,7 @@ Calculadora de frete do WooCommerce otimizada para lojas brasileiras:
 * Permite que apenas números sejam digitados no campo de CEP.
 * Mostra teclado númerico em aparelhos móveis.
 
-Algumas dessas funcionalidades podem ser modificadas ou desativadas por hooks. Mais detalhes no na [seção de perguntas frequentes (FAQ)](#faq).
+Algumas dessas funcionalidades podem ser modificadas ou desativadas por hooks. Mais detalhes na [seção de perguntas frequentes (FAQ)](#faq).
 
 = Ajuda e Suporte =
 

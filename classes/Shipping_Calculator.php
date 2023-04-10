@@ -21,7 +21,7 @@ final class Shipping_Calculator {
 		add_filter( 'woocommerce_shipping_calculator_enable_city', '__return_false', 20 );
 
 		// detect state from postcode
-		add_filter( 'woocommerce_cart_calculate_shipping_address', [ $this, 'prepare_address' ], 20 );
+		add_filter( 'woocommerce_cart_calculate_shipping_address', [ $this, 'prepare_address' ], 5 );
 
 		// frontend scripts
 		add_action( 'woocommerce_before_shipping_calculator', [ $this, 'add_extra_css' ] );
@@ -31,15 +31,15 @@ final class Shipping_Calculator {
 	public function prepare_address ( $address ) {
 		$country = h::get( $address['country'], 'BR' );
 		if ( ! $country || 'BR' === $country ) {
-			$postcode = h::get( $address['postcode'] );
+			$postcode = \wc_clean( \wp_unslash( $address['postcode'] ?? '' ) );
 			$state = Brazilian_States::get_state_from_postcode( $postcode );
 			if ( $state ) {
-				$address = [
-					'country' => 'BR',
-					'state' => $state,
-					'city' => '',
-					'postcode' => $postcode,
-				];
+				$address['country'] = 'BR';
+				$_POST['calc_shipping_country'] = 'BR';
+				$address['state'] = $state;
+				$_POST['calc_shipping_state'] = $state;
+				$address['postcode'] = $postcode;
+				$_POST['calc_shipping_postcode'] = $postcode;
 			}
 		}
 		return $address;

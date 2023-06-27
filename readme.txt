@@ -3,9 +3,9 @@ Contributors: luizbills
 Donate link: https://luizpb.com/donate
 Tags: woocommerce, brasil, brazil, calculadora de frete, frete, cep
 Requires at least: 4.6
-Tested up to: 6.1
+Tested up to: 6.2
 Requires PHP: 7.3
-Stable tag: 3.1.2
+Stable tag: 3.2.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -69,6 +69,9 @@ Use o seguinte código:
 );`
 
 == Changelog ==
+
+= 3.2.0 =
+* Tweak: Force WooCommerce settings to enable shipping calculation.
 
 = 3.1.2 =
 * Fix: Incompatibility with Fluid Checkout plugin.

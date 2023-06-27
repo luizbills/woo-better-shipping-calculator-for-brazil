@@ -1,9 +1,9 @@
 <?php
 /*
 Plugin Name: Calculadora de frete melhorada para lojas brasileiras
-Plugin URI: https://github.com/luizbills/wc-better-shipping-calculator-for-brazil
+Plugin URI: https://github.com/luizbills/woo-better-shipping-calculator-for-brazil
 Description: Calculadora de frete do WooCommerce otimizada para lojas brasileiras: remove dos campos de país, estado e cidade. E alguns outros ajustes.
-Version: 3.1.2
+Version: 3.2.0
 Author: Luiz Bills
 Author URI: https://luizpb.com
 Requires PHP: 7.3

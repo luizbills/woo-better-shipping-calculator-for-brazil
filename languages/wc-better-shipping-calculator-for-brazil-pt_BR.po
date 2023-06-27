@@ -6,8 +6,8 @@ msgstr ""
 "3.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woo-better-"
 "shipping-calculator-for-brazil\n"
-"POT-Creation-Date: 2022-08-08T16:35:23-03:00\n"
-"PO-Revision-Date: 2022-08-08 16:38-0300\n"
+"POT-Creation-Date: 2023-06-27T10:59:47-03:00\n"
+"PO-Revision-Date: 2023-06-27 11:00-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -23,8 +23,8 @@ msgid "Calculadora de frete melhorada para lojas brasileiras"
 msgstr "Calculadora de frete melhorada para lojas brasileiras"
 
 #. Plugin URI of the plugin
-msgid "https://github.com/luizbills/wc-better-shipping-calculator-for-brazil"
-msgstr "https://github.com/luizbills/wc-better-shipping-calculator-for-brazil"
+msgid "https://github.com/luizbills/woo-better-shipping-calculator-for-brazil"
+msgstr "https://github.com/luizbills/woo-better-shipping-calculator-for-brazil"
 
 #. Description of the plugin
 msgid ""
@@ -46,15 +46,15 @@ msgstr "https://luizpb.com/pt"
 msgid "Community support"
 msgstr "Suporte da comunidade"
 
-#: classes/Admin/Plugin_Meta.php:19 templates/notice-donation.php:16
+#: classes/Admin/Plugin_Meta.php:19 templates/notice-donation.php:17
 msgid "Donate"
 msgstr "Faça uma doação"
 
-#: classes/Shipping_Calculator.php:52
+#: classes/Shipping_Calculator.php:63
 msgid "Calculate shipping:"
 msgstr "Calcule o frete:"
 
-#: classes/Shipping_Calculator.php:90
+#: classes/Shipping_Calculator.php:105
 msgid "Type your postcode"
 msgstr "Digite seu CEP"
 
@@ -77,7 +77,7 @@ msgstr ""
 "Ajude-nos a manter o plugin %1$s gratuito e sempre atualizado fazendo uma "
 "doação ou uma avaliação com %2$s no WordPress.org."
 
-#: templates/notice-donation.php:17
+#: templates/notice-donation.php:18
 msgid "Make a review"
 msgstr "Faça uma avaliação"
 
